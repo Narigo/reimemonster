@@ -1,0 +1,22 @@
+{
+  "name": "reimemonster",
+  "version": "1.0.0",
+  "description": "Counts syllables in texts.",
+  "main": "index.mjs",
+  "scripts": {
+    "format": "prettier --write **/*.{m,}js",
+    "start": "node --experimental-modules src/index.mjs",
+    "test": "node --experimental-modules node_modules/.bin/jest"
+  },
+  "keywords": [],
+  "author": "Joern Bernhardt <jb@campudus.com> (http://www.campudus.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "prettier": "^1.7.4"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js","jsx","mjs","mjsx","json","node"],
+    "testMatch": ["**/__tests__/**/*.?(m)js?(x)", "**/?(*.)(spec|test).?(m)js?(x)"]
+  }
+}
