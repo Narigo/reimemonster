@@ -12,23 +12,7 @@
   "author": "Joern Bernhardt <jb@campudus.com> (http://www.campudus.com)",
   "license": "MIT",
   "devDependencies": {
-    "babel-preset-latest": "^6.24.1",
     "jest": "^21.2.1",
     "prettier": "^1.7.4"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "mjs",
-      "mjsx",
-      "json",
-      "node"
-    ],
-    "testMatch": [
-      "**/__tests__/**/*.?(m)js?(x)",
-      "**/?(*.)(spec|test).?(m)js?(x)"
-    ],
-    "verbose": true
   }
 }

@@ -1,4 +1,5 @@
-import {countSyllables} from "./count-syllables.mjs";
+const assert = require("assert");
+const {countSyllables} = require("./count-syllables");
 
 describe("count-syllables", () => {
   it("should count 0 for undefined", () => {
