@@ -18,6 +18,10 @@ describe("count-syllables", () => {
     assert.equal(countSyllables("wort"), 1);
   });
 
+  it("should not count 'n as new word/syllable", () => {
+    assert.equal(countSyllables("seh'n"), 1);
+  });
+
   it("should count 2 for not so simple words", () => {
     assert.equal(countSyllables("wörter"), 2);
   });
@@ -51,6 +55,10 @@ describe("count-syllables by line", () => {
 
   it("should count 1 for a simple word", () => {
     assert.deepEqual(countSyllablesByLine("wort"), [1]);
+  });
+
+  it("should not count 'n as new word/syllable", () => {
+    assert.deepEqual(countSyllablesByLine("seh'n"), [1]);
   });
 
   it("should count 2 for not so simple words", () => {

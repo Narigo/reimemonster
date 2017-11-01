@@ -6,7 +6,7 @@ const hyphenate = createHyphenator(hyphenationPatternsDe, {
 });
 
 function splitSyllables(text) {
-  const words = text.split(/[^\wäöüÄÖÜß]+/);
+  const words = text.split(/[^\wäöüÄÖÜß']+/);
   return words.reduce((acc, word) => {
     const splitWord = hyphenate(word).split(/\u00AD/).filter(w => w !== "");
     return [...acc, ...splitWord];
