@@ -1,12 +1,8 @@
-const {splitSyllables} = require("./splitSyllables");
-
+const { splitSyllables } = require("./splitSyllables");
 
 function countSyllables(text) {
-  if (text === null || text === undefined || text === "") {
-    return 0;
-  } else {
-    return splitSyllables(text).length;
-  }
+  const simpleText = text || "";
+  return splitSyllables(simpleText).length;
 }
 
 module.exports = {
