@@ -1,2 +1,8 @@
+const { countSyllables, countSyllablesByLine } = require("./count-syllables");
+const { splitSyllables } = require("./split-syllables");
 
-console.log("not implemented");
+module.exports = {
+  countSyllables,
+  countSyllablesByLine,
+  splitSyllables
+};

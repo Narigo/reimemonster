@@ -1,4 +1,4 @@
-const { splitSyllables } = require("./splitSyllables");
+const { splitSyllables } = require("./split-syllables");
 
 function countSyllables(text) {
   const simpleText = text || "";

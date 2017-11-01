@@ -1,7 +1,7 @@
 const assert = require("assert");
-const { splitSyllables } = require("./splitSyllables");
+const { splitSyllables } = require("./split-syllables");
 
-describe("splitSyllables", () => {
+describe("split-syllables", () => {
   it("should split a single word in a one element array", () => {
     assert.deepEqual(splitSyllables("wort"), ["wort"]);
   });
