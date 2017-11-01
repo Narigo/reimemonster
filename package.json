@@ -12,7 +12,9 @@
   "author": "Joern Bernhardt <jb@campudus.com> (http://www.campudus.com)",
   "license": "MIT",
   "devDependencies": {
+    "hyphen": "^1.0.2",
     "jest": "^21.2.1",
     "prettier": "^1.7.4"
-  }
+  },
+  "dependencies": {}
 }
