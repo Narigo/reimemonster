@@ -42,24 +42,29 @@ describe("split-syllables", () => {
   });
 
   it("should work well with punctuation", () => {
-    assert.deepEqual(splitSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), [
-      "Wie",
-      "das",
-      "fra",
-      "ge",
-      "ich",
-      "vie",
-      "le",
-      "Sil",
-      "ben",
-      "hat",
-      "die",
-      "ser",
-      "Text",
-      "oder",
-      "was",
-      "das",
-      "ist"
-    ]);
+    assert.deepEqual(
+      splitSyllables(
+        "Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."
+      ),
+      [
+        "Wie",
+        "das",
+        "fra",
+        "ge",
+        "ich",
+        "vie",
+        "le",
+        "Sil",
+        "ben",
+        "hat",
+        "die",
+        "ser",
+        "Text",
+        "oder",
+        "was",
+        "das",
+        "ist"
+      ]
+    );
   });
 });
