@@ -1,12 +1,12 @@
 const wordlist = require("./wordlists/german.json");
 
 function findRhyme(word) {
-  const matchesMultiVocals = /^(.*)([aeiouäöü][^aeiouäöü]*[aeiouäöü][^aeiouäöü]*$)/i.exec(word);
+  const matchesMultiVocals = /^(.*?)([aeiouäöü]+[^aeiouäöü]*[aeiouäöü][^aeiouäöü]*$)/i.exec(word);
   if (matchesMultiVocals) {
     return findRhymeForMatch(matchesMultiVocals);
   }
 
-  const matchesSingleVocal = /^(.*)([aeiouäöü][^aeiouäöü]*$)/i.exec(word);
+  const matchesSingleVocal = /^(.*?)([aeiouäöü]+[^aeiouäöü]*$)/i.exec(word);
   if (matchesSingleVocal) {
     return findRhymeForMatch(matchesSingleVocal);
   }

@@ -41,4 +41,9 @@ describe("find-rhyme", () => {
     const rhymingWords = findRhyme("aus");
     assert(rhymingWords.includes("Maus"));
   });
+
+  it("should count multiple vocals in a row as single vocal", () => {
+    const rhymingWords = findRhyme("laufen");
+    assert(!rhymingWords.includes("Kufen"));
+  });
 });
