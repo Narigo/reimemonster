@@ -2,4 +2,4 @@ const { findRhyme } = require("./find-rhyme");
 
 const wordToFindRhymeFor = process.argv[2];
 
-console.log(findRhyme(wordToFindRhymeFor));
+console.log(findRhyme(wordToFindRhymeFor).join("\n"));
