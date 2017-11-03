@@ -5,8 +5,9 @@
   "main": "index.mjs",
   "scripts": {
     "format": "prettier --write **/*.{m,}js",
-    "start": "node --experimental-modules src/index.mjs",
-    "test": "node --experimental-modules node_modules/.bin/jest"
+    "rhyme": "node src/cli-find.js",
+    "start": "node src/cli.js --validate",
+    "test": "node node_modules/.bin/jest"
   },
   "keywords": [],
   "author": "Joern Bernhardt <jb@campudus.com> (http://www.campudus.com)",
