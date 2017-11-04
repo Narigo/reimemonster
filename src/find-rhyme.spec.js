@@ -45,5 +45,6 @@ describe("find-rhyme", () => {
   it("should count multiple vocals in a row as single vocal", () => {
     const rhymingWords = findRhyme("laufen");
     assert(!rhymingWords.includes("Kufen"));
+    assert(rhymingWords.includes("saufen"));
   });
 });
