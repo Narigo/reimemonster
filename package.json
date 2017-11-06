@@ -2,12 +2,15 @@
   "name": "reimemonster",
   "version": "1.0.0",
   "description": "Counts syllables in texts.",
-  "main": "index.mjs",
+  "main": "src/index.js",
   "scripts": {
     "format": "prettier --write **/*.{m,}js",
     "rhyme": "node src/cli-find.js",
     "start": "node src/cli.js --validate",
     "test": "node node_modules/.bin/jest"
+  },
+  "engines": {
+    "node": ">=8.6.0"
   },
   "keywords": [],
   "author": "Joern Bernhardt <jb@campudus.com> (http://www.campudus.com)",
