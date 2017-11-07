@@ -4,10 +4,11 @@
   "description": "Counts syllables in texts.",
   "main": "src/index.js",
   "scripts": {
+    "coverage": "jest --coverage",
     "format": "prettier --write **/*.{m,}js",
     "rhyme": "node src/cli-find.js",
     "start": "node src/cli.js --validate",
-    "test": "node node_modules/.bin/jest"
+    "test": "jest"
   },
   "engines": {
     "node": ">=8.6.0"
