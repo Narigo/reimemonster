@@ -1,4 +1,6 @@
-# Reimemonster ![Build status](https://travis-ci.org/Narigo/reimemonster.svg?branch=master)
+# Reimemonster 
+[![Build Status](https://travis-ci.org/Narigo/reimemonster.svg?branch=master)](https://travis-ci.org/Narigo/reimemonster)
+[![Coverage Status](https://coveralls.io/repos/github/Narigo/reimemonster/badge.svg?branch=master)](https://coveralls.io/github/Narigo/reimemonster?branch=master)
 
 This repository contains helpers for making poems. For example it counts syllables and helps you find rhyming words.
 
