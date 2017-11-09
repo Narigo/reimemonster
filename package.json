@@ -7,7 +7,7 @@
     "coverage": "jest --coverage",
     "format": "prettier --write **/*.{m,}js",
     "rhyme": "node src/cli-find.js",
-    "start": "node src/cli.js --validate",
+    "start": "node src/cli-poem.js --validate",
     "test": "jest"
   },
   "engines": {
