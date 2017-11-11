@@ -8,6 +8,7 @@ describe("find-rhyme", () => {
 
   it("should return possible rhymes", () => {
     const rhymingWords = findRhyme("Haus");
+    assert(rhymingWords.includes("Laus"));
     assert(rhymingWords.includes("Maus"));
   });
 
@@ -46,5 +47,15 @@ describe("find-rhyme", () => {
     const rhymingWords = findRhyme("laufen");
     assert(!rhymingWords.includes("Kufen"));
     assert(rhymingWords.includes("saufen"));
+  });
+
+  it("should be possible to have different word lists for findRhyme", () => {
+    const rhymingWords = findRhyme("Haus", {
+      words: ["Haus", "Maus", "raus", "Chaos"]
+    });
+    assert(!rhymingWords.includes("Chaos"));
+    assert(!rhymingWords.includes("Laus"));
+    assert(rhymingWords.includes("Maus"));
+    assert(rhymingWords.includes("raus"));
   });
 });
