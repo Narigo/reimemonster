@@ -1,22 +1,22 @@
 const defaultWordList = require("./wordlists/german.json");
 
-function findRhyme(word, {words = defaultWordList} = {}) {
+function findRhyme(word, { words = defaultWordList } = {}) {
   const matchesMultiVocals = /^(.*?)([aeiouäöü]+[^aeiouäöü]*[aeiouäöü][^aeiouäöü]*$)/i.exec(
     word
   );
   if (matchesMultiVocals) {
-    return findRhymeForMatch(matchesMultiVocals, {words});
+    return findRhymeForMatch(matchesMultiVocals, { words });
   }
 
   const matchesSingleVocal = /^(.*?)([aeiouäöü]+[^aeiouäöü]*$)/i.exec(word);
   if (matchesSingleVocal) {
-    return findRhymeForMatch(matchesSingleVocal, {words});
+    return findRhymeForMatch(matchesSingleVocal, { words });
   }
 
   return [];
 }
 
-function findRhymeForMatch(matches, {words}) {
+function findRhymeForMatch(matches, { words }) {
   const searchPattern = new RegExp(`${matches[2]}$`, "i");
   const startsWithVocal = matches[1] === "" || matches[1].match(/[aeiouäöü]+/i);
   const sameWord = new RegExp(`${matches[1]}${matches[2]}$`, "i");
