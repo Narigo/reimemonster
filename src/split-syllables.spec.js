@@ -67,4 +67,15 @@ describe("split-syllables", () => {
       ]
     );
   });
+
+  // It will not match \u00AD because it is not included in \w.
+  it.skip("can split words with different characters", () => {
+    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "\u00AD" }), [
+      "o",
+      "der"
+    ]);
+    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "-" }), [
+      "o\u00ADder"
+    ]);
+  });
 });
