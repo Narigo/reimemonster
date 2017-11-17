@@ -1,4 +1,5 @@
 const assert = require("assert");
+const hyphenatorPatternEn = require("hyphen/patterns/en-us");
 const { splitSyllables } = require("./split-syllables");
 
 describe("split-syllables", () => {
@@ -66,6 +67,27 @@ describe("split-syllables", () => {
         "ist"
       ]
     );
+  });
+
+  it("can use different patterns as hyphenator pattern", () => {
+    assert.deepEqual(splitSyllables("whatever fits you forever", { hyphenatorPattern: hyphenatorPatternEn }), [
+      "what",
+      "ev",
+      "er",
+      "fits",
+      "you",
+      "for",
+      "ev",
+      "er"
+    ]);
+    assert.deepEqual(splitSyllables("There is no perfect game", { hyphenatorPattern: hyphenatorPatternEn }), [
+      "There",
+      "is",
+      "no",
+      "per",
+      "fect",
+      "game"
+    ]);
   });
 
   // It will not match \u00AD because it is not included in \w.

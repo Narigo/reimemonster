@@ -1,10 +1,16 @@
 const createHyphenator = require("hyphen");
-const hyphenationPatternsDe = require("hyphen/patterns/de");
+const defaultHyphenatorPattern = require("hyphen/patterns/de");
 
 const defaultHyphenChar = "\u00AD";
 
-function splitSyllables(text, { hyphenChar = defaultHyphenChar } = {}) {
-  const hyphenate = createHyphenator(hyphenationPatternsDe, {
+function splitSyllables(
+  text,
+  {
+    hyphenChar = defaultHyphenChar,
+    hyphenatorPattern = defaultHyphenatorPattern
+  } = {}
+) {
+  const hyphenate = createHyphenator(hyphenatorPattern, {
     hyphenChar
   });
 
