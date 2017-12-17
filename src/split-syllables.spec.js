@@ -70,24 +70,18 @@ describe("split-syllables", () => {
   });
 
   it("can use different patterns as hyphenator pattern", () => {
-    assert.deepEqual(splitSyllables("whatever fits you forever", { hyphenatorPattern: hyphenatorPatternEn }), [
-      "what",
-      "ev",
-      "er",
-      "fits",
-      "you",
-      "for",
-      "ev",
-      "er"
-    ]);
-    assert.deepEqual(splitSyllables("There is no perfect game", { hyphenatorPattern: hyphenatorPatternEn }), [
-      "There",
-      "is",
-      "no",
-      "per",
-      "fect",
-      "game"
-    ]);
+    assert.deepEqual(
+      splitSyllables("whatever fits you forever", {
+        hyphenatorPattern: hyphenatorPatternEn
+      }),
+      ["what", "ev", "er", "fits", "you", "for", "ev", "er"]
+    );
+    assert.deepEqual(
+      splitSyllables("There is no perfect game", {
+        hyphenatorPattern: hyphenatorPatternEn
+      }),
+      ["There", "is", "no", "per", "fect", "game"]
+    );
   });
 
   // It will not match \u00AD because it is not included in \w.
