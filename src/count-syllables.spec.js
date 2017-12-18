@@ -27,12 +27,7 @@ describe("count-syllables", () => {
   });
 
   it("should work well with punctuation", () => {
-    assert.equal(
-      countSyllables(
-        "Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."
-      ),
-      17
-    );
+    assert.equal(countSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), 17);
   });
 });
 

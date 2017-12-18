@@ -16,13 +16,7 @@ describe("split-syllables", () => {
   });
 
   it("should split each word for itself", () => {
-    assert.deepEqual(splitSyllables("worte wort worte"), [
-      "wor",
-      "te",
-      "wort",
-      "wor",
-      "te"
-    ]);
+    assert.deepEqual(splitSyllables("worte wort worte"), ["wor", "te", "wort", "wor", "te"]);
   });
 
   it("should split correctly on more complicated words", () => {
@@ -43,30 +37,25 @@ describe("split-syllables", () => {
   });
 
   it("should work well with punctuation", () => {
-    assert.deepEqual(
-      splitSyllables(
-        "Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."
-      ),
-      [
-        "Wie",
-        "das",
-        "fra",
-        "ge",
-        "ich",
-        "vie",
-        "le",
-        "Sil",
-        "ben",
-        "hat",
-        "die",
-        "ser",
-        "Text",
-        "oder",
-        "was",
-        "das",
-        "ist"
-      ]
-    );
+    assert.deepEqual(splitSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), [
+      "Wie",
+      "das",
+      "fra",
+      "ge",
+      "ich",
+      "vie",
+      "le",
+      "Sil",
+      "ben",
+      "hat",
+      "die",
+      "ser",
+      "Text",
+      "oder",
+      "was",
+      "das",
+      "ist"
+    ]);
   });
 
   it("can use different patterns as hyphenator pattern", () => {
@@ -86,12 +75,7 @@ describe("split-syllables", () => {
 
   // It will not match \u00AD because it is not included in \w.
   it.skip("can split words with different characters", () => {
-    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "\u00AD" }), [
-      "o",
-      "der"
-    ]);
-    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "-" }), [
-      "o\u00ADder"
-    ]);
+    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "\u00AD" }), ["o", "der"]);
+    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "-" }), ["o\u00ADder"]);
   });
 });
