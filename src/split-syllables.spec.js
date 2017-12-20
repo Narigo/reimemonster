@@ -7,6 +7,16 @@ describe("split-syllables", () => {
     assert.deepEqual(splitSyllables("wort"), ["wort"]);
   });
 
+  // FIXME this.
+  it.skip("should split a single word in a one element array", () => {
+    assert.deepEqual(splitSyllables("oder"), ["o", "der"]);
+  });
+
+  // FIXME this.
+  it.skip("should split a three syllable word into three syllables", () => {
+    assert.deepEqual(splitSyllables("Ameise"), ["A", "mei", "se"]);
+  });
+
   it("should split two single words in a two element array", () => {
     assert.deepEqual(splitSyllables("wort wort"), ["wort", "wort"]);
   });
