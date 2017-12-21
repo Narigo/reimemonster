@@ -26,8 +26,28 @@ describe("count-syllables", () => {
     assert.equal(countSyllables("wörter"), 2);
   });
 
+  it("should count 2 for 'oder'", () => {
+    assert.equal(countSyllables("oder"), 2);
+  });
+
+  it("should count 3 for 'Ameise'", () => {
+    assert.equal(countSyllables("Ameise"), 3);
+  });
+
+  it("should count 3 for 'Bedeutung'", () => {
+    assert.equal(countSyllables("Bedeutung"), 3);
+  });
+
+  it("should count 2 for 'teuer'", () => {
+    assert.equal(countSyllables("teuer"), 2);
+  });
+
+  it("should count 3 for 'Xylophon'", () => {
+    assert.equal(countSyllables("Xylophon"), 3);
+  });
+
   it("should work well with punctuation", () => {
-    assert.equal(countSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), 17);
+    assert.equal(countSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), 18);
   });
 });
 
@@ -64,7 +84,7 @@ describe("count-syllables by line", () => {
     assert.deepEqual(
       countSyllablesByLine(`Dies ist ein Test.
         Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist.`),
-      [4, 17]
+      [4, 18]
     );
   });
 });

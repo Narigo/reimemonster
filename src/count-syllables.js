@@ -1,8 +1,9 @@
-const { splitSyllables } = require("./split-syllables");
-
 function countSyllables(text) {
   const simpleText = text || "";
-  return splitSyllables(simpleText).length;
+  return simpleText
+    .split(/[^\wäöüÄÖÜß']+/)
+    .map(word => word.split(/[aeiouäöüy]{1,2}/i).length - 1)
+    .reduce((sum, x) => sum + x, 0);
 }
 
 function countSyllablesByLine(text) {

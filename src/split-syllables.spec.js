@@ -61,6 +61,7 @@ describe("split-syllables", () => {
       "die",
       "ser",
       "Text",
+      // FIXME "oder" -> "o", "der",
       "oder",
       "was",
       "das",
