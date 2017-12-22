@@ -1,6 +1,12 @@
 const assert = require("assert");
 const { countSyllables, countSyllablesByLine } = require("./count-syllables");
 
+function testWord(word, num) {
+  return it(`should count ${num} for '${word}'`, () => {
+    assert.equal(countSyllables(word), num);
+  });
+}
+
 describe("count-syllables", () => {
   it("should count 0 for undefined", () => {
     assert.equal(countSyllables(), 0);
@@ -26,24 +32,19 @@ describe("count-syllables", () => {
     assert.equal(countSyllables("wörter"), 2);
   });
 
-  it("should count 2 for 'oder'", () => {
-    assert.equal(countSyllables("oder"), 2);
-  });
+  testWord("oder", 2);
+  testWord("Ameise", 3);
+  testWord("Bedeutung", 3);
+  testWord("teuer", 2);
+  testWord("Xylophon", 3);
 
-  it("should count 3 for 'Ameise'", () => {
-    assert.equal(countSyllables("Ameise"), 3);
-  });
-
-  it("should count 3 for 'Bedeutung'", () => {
-    assert.equal(countSyllables("Bedeutung"), 3);
-  });
-
-  it("should count 2 for 'teuer'", () => {
-    assert.equal(countSyllables("teuer"), 2);
-  });
-
-  it("should count 3 for 'Xylophon'", () => {
-    assert.equal(countSyllables("Xylophon"), 3);
+  it(`should count correctly for '-uelle'`, () => {
+    assert.equal(countSyllables("Intellektuelle"), 6);
+    assert.equal(countSyllables("visuelle"), 4);
+    assert.equal(countSyllables("textuellen"), 4);
+    assert.equal(countSyllables("spirituellen"), 5);
+    assert.equal(countSyllables("quellen"), 2);
+    assert.equal(countSyllables("Quellenintellektuel"), 7);
   });
 
   it("should work well with punctuation", () => {
