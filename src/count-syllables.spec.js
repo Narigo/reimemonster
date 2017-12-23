@@ -47,6 +47,12 @@ describe("count-syllables", () => {
     assert.equal(countSyllables("Quellenintellektuel"), 7);
   });
 
+  it("should count correctly for 'ion'", () => {
+    assert.equal(countSyllables("Bastion"), 3);
+    assert.equal(countSyllables("Millionen"), 4);
+    assert.equal(countSyllables("Ion"), 2);
+  });
+
   it("should work well with punctuation", () => {
     assert.equal(countSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), 18);
   });
