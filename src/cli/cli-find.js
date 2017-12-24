@@ -1,4 +1,4 @@
-const { findRhyme } = require("./find-rhyme");
+const { findRhyme } = require("../module/find-rhyme");
 
 const wordToFindRhymeFor = process.argv[2];
 

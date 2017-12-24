@@ -1,5 +1,5 @@
 const split = require("split");
-const { countSyllables } = require("./count-syllables");
+const { countSyllables } = require("../module/count-syllables");
 
 const validate = process.argv[2] === "--validate";
 

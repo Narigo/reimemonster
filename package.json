@@ -2,12 +2,12 @@
   "name": "reimemonster",
   "version": "0.1.0",
   "description": "Counts syllables in texts.",
-  "main": "src/index.js",
+  "main": "src/module/index.js",
   "scripts": {
     "coverage": "jest --coverage",
     "format": "prettier --write **/*.{m,}js",
-    "rhyme": "node src/cli-find.js",
-    "start": "node src/cli-poem.js --validate",
+    "rhyme": "node src/cli/cli-find.js",
+    "start": "node src/cli/cli-poem.js --validate",
     "test": "jest"
   },
   "engines": {
