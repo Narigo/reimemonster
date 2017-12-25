@@ -1,0 +1,92 @@
+import assert from "assert";
+import hyphenatorPatternEn from "hyphen/patterns/en-us";
+import { splitSyllables } from "./split-syllables.mjs";
+
+describe("split-syllables", () => {
+  it("should split a single word in a one element array", () => {
+    assert.deepEqual(splitSyllables("wort"), ["wort"]);
+  });
+
+  // FIXME this.
+  it.skip("should split a single word in a one element array", () => {
+    assert.deepEqual(splitSyllables("oder"), ["o", "der"]);
+  });
+
+  // FIXME this.
+  it.skip("should split a three syllable word into three syllables", () => {
+    assert.deepEqual(splitSyllables("Ameise"), ["A", "mei", "se"]);
+  });
+
+  it("should split two single words in a two element array", () => {
+    assert.deepEqual(splitSyllables("wort wort"), ["wort", "wort"]);
+  });
+
+  it("should split these words into two element arrays", () => {
+    assert.deepEqual(splitSyllables("worte"), ["wor", "te"]);
+  });
+
+  it("should split each word for itself", () => {
+    assert.deepEqual(splitSyllables("worte wort worte"), ["wor", "te", "wort", "wor", "te"]);
+  });
+
+  it("should split correctly on more complicated words", () => {
+    assert.deepEqual(splitSyllables("wer will viele silben zählen"), [
+      "wer",
+      "will",
+      "vie",
+      "le",
+      "sil",
+      "ben",
+      "zäh",
+      "len"
+    ]);
+  });
+
+  it("should split more complicated words correctly", () => {
+    assert.deepEqual(splitSyllables("Zeppeline"), ["Zep", "pe", "li", "ne"]);
+  });
+
+  it("should work well with punctuation", () => {
+    assert.deepEqual(splitSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), [
+      "Wie",
+      "das",
+      "fra",
+      "ge",
+      "ich",
+      "vie",
+      "le",
+      "Sil",
+      "ben",
+      "hat",
+      "die",
+      "ser",
+      "Text",
+      // FIXME "oder" -> "o", "der",
+      "oder",
+      "was",
+      "das",
+      "ist"
+    ]);
+  });
+
+  it("can use different patterns as hyphenator pattern", () => {
+    assert.deepEqual(
+      splitSyllables("whatever fits you forever", {
+        hyphenatorPattern: hyphenatorPatternEn
+      }),
+      ["what", "ev", "er", "fits", "you", "for", "ev", "er"]
+    );
+    assert.deepEqual(
+      splitSyllables("There is no perfect game", {
+        hyphenatorPattern: hyphenatorPatternEn
+      }),
+      ["There", "is", "no", "per", "fect", "game"]
+    );
+  });
+
+  // It will not match \u00AD because it is not included in \w.
+  it.skip("can split words with different characters", () => {
+    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "\u00AD" }), ["o", "der"]);
+    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "-" }), ["o\u00ADder"]);
+  });
+});
