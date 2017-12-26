@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reimemonster-Demo</title>
+  <style type="text/css">
+    html,body {
+      margin:0;
+      padding:0;
+      background-color: #EEEEEE;
+      font-family: sans-serif;
+      color: #222222;
+    }
+
+    header {
+      padding: 25px;
+    }
+
+    textarea {
+      margin: 0 25px;
+      width: 95%;
+      height: 500px;
+      font-family: monospace;
+      font-size: x-large;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Reimemonster Module Demo</h1>
+</header>
+<section>
+  <textarea id="poem"></textarea>
+</section>
+<footer>
+</footer>
+<script>
+  const $poem = document.getElementById("poem");
+  $poem.oninput = () => {
+    const textValue = $poem.value;
+    console.log("textValue =", textValue);
+  };
+</script>
+</body>
+</html>
