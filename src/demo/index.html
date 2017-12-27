@@ -16,9 +16,14 @@
       padding: 25px;
     }
 
-    textarea {
+    #reimemonster {
+      width: 100%;
+      height: 500px;
+    }
+
+    #poem {
       margin: 0 25px;
-      width: 95%;
+      width: 50%;
       height: 500px;
       font-family: monospace;
       font-size: x-large;
@@ -29,17 +34,22 @@
 <header>
   <h1>Reimemonster Module Demo</h1>
 </header>
-<section>
+<section id="reimemonster">
   <textarea id="poem"></textarea>
+  <div id="helper"></div>
 </section>
 <footer>
 </footer>
-<script>
+<script type="module" src="../module/count-syllables.mjs"></script>
+<script type="module">
+  import {countSyllablesByLine} from "../module/count-syllables.mjs";
+
   const $poem = document.getElementById("poem");
   $poem.oninput = () => {
     const textValue = $poem.value;
     console.log("textValue =", textValue);
   };
+  console.log("countSyllables", countSyllablesByLine);
 </script>
 </body>
 </html>
