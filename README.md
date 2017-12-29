@@ -20,7 +20,7 @@ npm install reimemonster
 
 #### findRhyme
 ```
-findRhyme(word: String): String[]
+findRhyme(word: string): string[]
 ```
 
 `findRhyme` will present you a list of Strings that may rhyme on your word by checking their 
@@ -39,7 +39,7 @@ ending. For example, `findRhyme("anleiern")` results in a list like this:
 
 #### countSyllables
 ```
-countSyllables(text: String): Integer
+countSyllables(text: string): integer
 ```
 
 This will count the number of syllables in a text by using the `hyphen` module. It uses `hyphen` to find splitting 
@@ -53,7 +53,7 @@ You can use the command line tools by cloning this repository and run the `npm` 
 To count syllables in verses, you can use this command for example:  
 
 ```
-npm run start | cat
+npm run start
 ```
 
 To get out of this mode, press `CTRL`+`D`.
