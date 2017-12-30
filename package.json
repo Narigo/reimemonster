@@ -5,6 +5,7 @@
   "main": "src/module/index.mjs",
   "scripts": {
     "coverage": "jest --coverage",
+    "demo": "python server.py",
     "format": "prettier --write **/*.{m,}js",
     "rhyme": "node --experimental-modules src/cli/cli-find.mjs",
     "start": "node --experimental-modules src/cli/cli-poem.mjs --validate",
