@@ -18,12 +18,33 @@
   "author": "Joern Bernhardt <jb@campudus.com> (http://www.campudus.com)",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.0.4",
+    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "jest": "^21.2.1",
-    "prettier": "^1.7.4"
+    "jest": "^22.0.4",
+    "prettier": "^1.9.2"
   },
   "dependencies": {
     "hyphen": "^1.0.2",
     "split": "^1.0.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "node",
+      "mjs"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.js?(x)",
+      "**/?(*.)(spec|test).js?(x)",
+      "**/__tests__/**/*.mjs",
+      "**/?(*.)(spec|test).mjs"
+    ],
+    "transform": {
+      "^.+\\.m?jsx?$": "babel-jest"
+    }
   }
 }
