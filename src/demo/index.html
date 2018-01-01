@@ -53,8 +53,10 @@
 <footer>
 </footer>
 <script type="module" src="../module/count-syllables.mjs"></script>
+<script type="module" src="../module/find-rhyme.mjs"></script>
 <script type="module">
   import {countSyllablesByLine} from "../module/count-syllables.mjs";
+  import {findRhyme} from "../module/find-rhyme.mjs";
 
   const $poem = document.getElementById("poem");
   const $helper = document.getElementById("helper");
@@ -63,6 +65,19 @@
     const countedSyllables = countSyllablesByLine(textValue);
     $helper.innerHTML = countedSyllables.join("<br/>");
   };
+
+  $poem.onselect = () => {
+    const textValue = $poem.value;
+    const word = getWordFromPosition(textValue, $poem.selectionStart, $poem.selectionEnd);
+    if (word.length >= 4) {
+      const rhymes = findRhyme(word);
+      console.log(rhymes);
+    }
+  };
+
+  function getWordFromPosition(text, positionStart, positionEnd) {
+    return text.substring(positionStart, positionEnd);
+  }
 </script>
 </body>
 </html>
