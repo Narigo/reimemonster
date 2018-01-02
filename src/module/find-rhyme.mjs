@@ -1,4 +1,5 @@
-import defaultWordList from "./wordlists/german.mjs";
+import germanWordList from "./wordlists/german.mjs";
+const defaultWordList = germanWordList.split(/\n/);
 
 export function findRhyme(word, { words = defaultWordList } = {}) {
   const matchesMultiVocals = /^(.*?)([aeiouäöü]+[^aeiouäöü]*[aeiouäöü][^aeiouäöü]*$)/i.exec(word);
