@@ -22,6 +22,15 @@ function exceptionSplitter(words, word) {
     if (ionException) {
       return [...splitOnException(ionException[1]), ...splitOnException(ionException[2])];
     }
+    const bakterieException = /^(.*bak)(te)(ri)(e.*)$/gi.exec(word);
+    if (bakterieException) {
+      return [
+        ...splitOnException(bakterieException[1]),
+        bakterieException[2],
+        bakterieException[3],
+        ...splitOnException(bakterieException[4])
+      ];
+    }
     return [word];
   };
   const exceptions = splitOnException(word);

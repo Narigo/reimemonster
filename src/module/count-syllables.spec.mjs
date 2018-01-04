@@ -53,6 +53,13 @@ describe("count-syllables", () => {
     assert.equal(countSyllables("Ion"), 2);
   });
 
+  it("should count correctly for some ", () => {
+    assert.equal(countSyllables("Bakterie"), 4);
+    assert.equal(countSyllables("Bakterien"), 4);
+    assert.equal(countSyllables("Batterie"), 3);
+    assert.equal(countSyllables("Batterien"), 3);
+  });
+
   it("should work well with punctuation", () => {
     assert.equal(countSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), 18);
   });
