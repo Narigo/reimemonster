@@ -13,23 +13,14 @@ export function countSyllablesByLine(text) {
 }
 
 function exceptionSplitter(words, word) {
+  const exceptionsList = [/^(.*[^q]u)(el.*)$/gi, /^(.*i)(on.*)$/gi, /^(.*bak)(te)(ri)(e.*)$/gi];
   const splitOnException = word => {
-    const uelException = /^(.*[^q]u)(el.*)$/gi.exec(word);
-    if (uelException) {
-      return [...splitOnException(uelException[1]), ...splitOnException(uelException[2])];
-    }
-    const ionException = /^(.*i)(on.*)$/gi.exec(word);
-    if (ionException) {
-      return [...splitOnException(ionException[1]), ...splitOnException(ionException[2])];
-    }
-    const bakterieException = /^(.*bak)(te)(ri)(e.*)$/gi.exec(word);
-    if (bakterieException) {
-      return [
-        ...splitOnException(bakterieException[1]),
-        ...splitOnException(bakterieException[2]),
-        ...splitOnException(bakterieException[3]),
-        ...splitOnException(bakterieException[4])
-      ];
+    for (let i = 0; i < exceptionsList.length; i++) {
+      const matches = exceptionsList[i].exec(word);
+      if (matches) {
+        const splits = matches.slice(1);
+        return splits.reduce((acc, split) => acc.concat(splitOnException(split)), []);
+      }
     }
     return [word];
   };
