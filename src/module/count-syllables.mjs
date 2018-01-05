@@ -13,7 +13,15 @@ export function countSyllablesByLine(text) {
 }
 
 function exceptionSplitter(words, word) {
-  const exceptionsList = [/^(.*[^q]u)(el.*)$/gi, /^(.*i)(on.*)$/gi, /^(.*bak)(te)(ri)(e.*)$/gi];
+  const exceptionsList = [
+    /^(.*e)([ao].*)$/gi,
+    /^(.*i)(a.*)$/gi,
+    /^(.*[^q]u)(el.*)$/gi,
+    /^(.*i)(on.*)$/gi,
+    /^(.*ä)(us.*)$/gi,
+    /^(.*e)(ta)(e)(be.*)$/gi,
+    /^(.*bak)(te)(ri)(e.*)$/gi
+  ];
   const splitOnException = word => {
     for (let i = 0; i < exceptionsList.length; i++) {
       const matches = exceptionsList[i].exec(word);

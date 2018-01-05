@@ -1,4 +1,5 @@
 import assert from "assert";
+import wordlist from "./wordlists/german.mjs";
 import { countSyllables, countSyllablesByLine } from "./count-syllables.mjs";
 
 function testWord(word, num) {
@@ -32,12 +33,6 @@ describe("count-syllables", () => {
     assert.equal(countSyllables("wörter"), 2);
   });
 
-  testWord("oder", 2);
-  testWord("Ameise", 3);
-  testWord("Bedeutung", 3);
-  testWord("teuer", 2);
-  testWord("Xylophon", 3);
-
   it(`should count correctly for '-uelle'`, () => {
     assert.equal(countSyllables("Intellektuelle"), 6);
     assert.equal(countSyllables("visuelle"), 4);
@@ -53,15 +48,33 @@ describe("count-syllables", () => {
     assert.equal(countSyllables("Ion"), 2);
   });
 
-  it("should count correctly for some ", () => {
-    assert.equal(countSyllables("Bakterie"), 4);
-    assert.equal(countSyllables("Bakterien"), 4);
-    assert.equal(countSyllables("Batterie"), 3);
-    assert.equal(countSyllables("Batterien"), 3);
+  describe("should count correctly for some exceptions / non-exceptions", () => {
+    testWord("Ameise", 3);
+    testWord("Bedeutung", 3);
+    testWord("teuer", 2);
+    testWord("Bakterie", 4);
+    testWord("bakterie", 4);
+    testWord("Bakterien", 4);
+    testWord("Batterie", 3);
+    testWord("Batterien", 3);
+    testWord("beobachten", 4);
+    testWord("Matthias", 3);
+    testWord("Matthäus", 3);
+    testWord("Metaebene", 5);
+    testWord("Meteor", 3);
+    testWord("oder", 2);
+    testWord("Sebastian", 4);
+    testWord("Xylophon", 3);
   });
 
   it("should work well with punctuation", () => {
     assert.equal(countSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), 18);
+  });
+
+  describe("dictionary-test", () => {
+    it("should make a good snapshot for the wordlist", () => {
+      expect(wordlist.split(/\n/).map(word => `${word}:${countSyllables(word)}`)).toMatchSnapshot();
+    });
   });
 });
 
