@@ -26,8 +26,8 @@ function exceptionSplitter(words, word) {
     if (bakterieException) {
       return [
         ...splitOnException(bakterieException[1]),
-        bakterieException[2],
-        bakterieException[3],
+        ...splitOnException(bakterieException[2]),
+        ...splitOnException(bakterieException[3]),
         ...splitOnException(bakterieException[4])
       ];
     }
