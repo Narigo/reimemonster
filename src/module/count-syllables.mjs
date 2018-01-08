@@ -18,6 +18,7 @@ function exceptionSplitter(words, word) {
     /^(.*i)(a.*)$/gi,
     /^(.*[^q]u)(el.*)$/gi,
     /^(.*i)(on.*)$/gi,
+    /^(.*i)(um.*)$/gi,
     /^(.*ä)(us.*)$/gi,
     /^(.*e)(ta)(e)(be.*)$/gi,
     /^(.*bak)(te)(ri)(e.*)$/gi

@@ -64,6 +64,7 @@ describe("count-syllables", () => {
     testWord("Meteor", 3);
     testWord("oder", 2);
     testWord("Sebastian", 4);
+    testWord("Studium", 3);
     testWord("Xylophon", 3);
   });
 
