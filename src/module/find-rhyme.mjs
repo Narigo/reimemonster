@@ -2,12 +2,13 @@ import germanWordList from "./wordlists/german.mjs";
 const defaultWordList = germanWordList.split(/\n/);
 
 export function findRhyme(word, { words = defaultWordList } = {}) {
-  const matchesMultiVocals = /^(.*?)([aeiouäöü]+[^aeiouäöü]*[aeiouäöü][^aeiouäöü]*$)/i.exec(word);
+  const wordToFindRhymeFor = word.replace(/(\w+)([\W]*$)/, "$1");
+  const matchesMultiVocals = /^(.*?)([aeiouäöü]+[^aeiouäöü]*[aeiouäöü][^aeiouäöü]*$)/i.exec(wordToFindRhymeFor);
   if (matchesMultiVocals) {
     return findRhymeForMatch(matchesMultiVocals, { words });
   }
 
-  const matchesSingleVocal = /^(.*?)([aeiouäöü]+[^aeiouäöü]*$)/i.exec(word);
+  const matchesSingleVocal = /^(.*?)([aeiouäöü]+[^aeiouäöü]*$)/i.exec(wordToFindRhymeFor);
   if (matchesSingleVocal) {
     return findRhymeForMatch(matchesSingleVocal, { words });
   }

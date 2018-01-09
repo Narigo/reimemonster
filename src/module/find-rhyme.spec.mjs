@@ -58,4 +58,14 @@ describe("find-rhyme", () => {
     assert(rhymingWords.includes("Maus"));
     assert(rhymingWords.includes("raus"));
   });
+
+  it("should remove punctuation etc at the end of a word", () => {
+    const rhymingWords = findRhyme("Haus...!", {
+      words: ["Haus", "Maus", "raus", "Chaos"]
+    });
+    assert(!rhymingWords.includes("Chaos"));
+    assert(!rhymingWords.includes("Laus"));
+    assert(rhymingWords.includes("Maus"));
+    assert(rhymingWords.includes("raus"));
+  });
 });
