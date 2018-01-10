@@ -51,13 +51,13 @@ describe("count-syllables", () => {
   describe("should count correctly for some exceptions / non-exceptions", () => {
     testWord("Ameise", 3);
     testWord("Bedeutung", 3);
-    testWord("teuer", 2);
     testWord("Bakterie", 4);
     testWord("bakterie", 4);
     testWord("Bakterien", 4);
     testWord("Batterie", 3);
     testWord("Batterien", 3);
     testWord("beobachten", 4);
+    testWord("Chaos", 2);
     testWord("Matthias", 3);
     testWord("Matthäus", 3);
     testWord("Metaebene", 5);
@@ -65,6 +65,7 @@ describe("count-syllables", () => {
     testWord("oder", 2);
     testWord("Sebastian", 4);
     testWord("Studium", 3);
+    testWord("teuer", 2);
     testWord("Xylophon", 3);
   });
 

@@ -16,6 +16,7 @@ function exceptionSplitter(words, word) {
   const exceptionsList = [
     /^(.*e)([ao].*)$/gi,
     /^(.*i)(a.*)$/gi,
+    /^(.*a)(o.*)$/gi,
     /^(.*[^q]u)(el.*)$/gi,
     /^(.*i)(on.*)$/gi,
     /^(.*i)(um.*)$/gi,
