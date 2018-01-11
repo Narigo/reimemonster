@@ -4,53 +4,124 @@
   <meta charset="UTF-8">
   <title>Reimemonster-Demo</title>
   <style type="text/css">
+    :root {
+      --background-color: #EEEEEE;
+      --highlight-color: #66CCA2;
+      --highlight2-color: #84C2A6;
+      --main-color: #222222;
+      --footer-background-color: var(--main-color);
+      --footer-text-color: var(--highlight2-color);
+      --header-text-color: #FFFFFF;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #EEEEEE;
+      min-height: 100%;
+      background-color: var(--background-color);
       font-family: sans-serif;
-      color: #222222;
+      color: var(--main-color);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: -webkit-fill-available;
     }
 
     header {
+      padding: 25px 25px 0 25px;
+      background: linear-gradient(var(--highlight-color), var(--highlight2-color));
+      flex-basis: 5rem;
+      flex-shrink: 0;
+      color: var(--header-text-color);
+    }
+
+    footer {
+      background-color: var(--footer-background-color);
+      color: var(--footer-text-color);
       padding: 25px;
+      flex-shrink: 0;
     }
 
     #demo {
-      width: 100%;
-      height: 500px;
-      margin: 0 25px;
+      margin: 0 25px 50px 0;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    #demo .rhymes-wrap {
+      flex-basis: 2rem;
+      flex-shrink: 0;
+      margin: 25px;
+    }
+
+    #demo .poem-wrap {
+      flex-grow: 1;
       display: flex;
       flex-direction: row;
     }
 
+    #rhymes {
+      width: 100%;
+      box-sizing: border-box;
+      margin-left: 25px;
+      padding-left: 10px;
+      border-left: 5px solid var(--main-color);
+    }
+
+    #rhymes.hidden {
+      max-height: 2rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      box-shadow: inset 0 -100px 50px -100px var(--main-color);
+    }
+
     #poem {
-      min-width: 25%;
-      height: 500px;
       font-family: monospace;
       font-size: x-large;
       border: 0;
-      flex-grow: 1;
+      width: 80%;
+      border-right: 5px solid var(--main-color);
+      box-shadow: inset 0 0 0 0 var(--main-color);
+      background: var(--background-color);
     }
 
     #helper {
+      height: 100%;
       padding: 2px 20px;
-      height: 500px;
       font-family: monospace;
       font-size: x-large;
-      flex-grow: 1;
     }
+
+    #helper .ok {
+      color: var(--main-color);
+    }
+
+    #helper .warn {
+      color: var(--highlight-color);
+    }
+
   </style>
 </head>
 <body>
 <header>
-  <h1>Reimemonster Module Demo</h1>
+  <h1>Reimemonster Demo</h1>
+  <p>Einfacher Gedichte schreiben.</p>
 </header>
 <section id="demo">
-  <textarea id="poem"></textarea>
-  <div id="helper"></div>
+  <div class="rhymes-wrap">
+    <p class="help-text">Markiere ein Wort, um Reimvorschläge zu erhalten!</p>
+    <div id="rhymes" class="hidden"></div>
+  </div>
+  <div class="poem-wrap">
+    <textarea id="poem"></textarea>
+    <div id="helper"></div>
+  </div>
 </section>
 <footer>
+  &copy; 2018 Jörn Bernhardt
 </footer>
 <script type="module">
   import {countSyllablesByLine} from "../module/count-syllables.mjs";
@@ -58,10 +129,29 @@
 
   const $poem = document.getElementById("poem");
   const $helper = document.getElementById("helper");
+  const $rhymes = document.getElementById("rhymes");
+  const minHeight = $poem.clientHeight;
+
+  $poem.focus();
+
   $poem.oninput = () => {
     const textValue = $poem.value;
     const countedSyllables = countSyllablesByLine(textValue);
-    $helper.innerHTML = countedSyllables.join("<br/>");
+    $helper.innerHTML = countedSyllables.reduce((lastLineInfos, syllablesInLine) => {
+        const lineInfos = {...lastLineInfos};
+        lineInfos.lineNumber = lastLineInfos.lineNumber + 1;
+        lineInfos.syllables = syllablesInLine;
+        const shouldWarn = (syllablesInLine !== 0 && lastLineInfos.syllables !== 0 && lineInfos.syllables !== lastLineInfos.syllables);
+        lineInfos.html = `${lineInfos.html}<span class="${shouldWarn ? "warn" : "ok"}">${syllablesInLine}</span><br />`;
+        return lineInfos;
+      },
+      {
+        lineNumber: 0,
+        syllables: 0,
+        html: ""
+      }).html;
+    const height = Math.max(minHeight, $helper.clientHeight);
+    $poem.style.height = `${height}px`;
   };
 
   $poem.onselect = () => {
@@ -69,9 +159,13 @@
     const word = getWordFromPosition(textValue, $poem.selectionStart, $poem.selectionEnd);
     if (word.length >= 4) {
       const rhymes = findRhyme(word);
-      console.log(rhymes);
+      $rhymes.innerText = `${rhymes.join(", ")}`;
     }
   };
+
+  $rhymes.addEventListener("pointerdown", () => {
+    $rhymes.classList.toggle("hidden");
+  });
 
   function getWordFromPosition(text, positionStart, positionEnd) {
     return text.substring(positionStart, positionEnd);
