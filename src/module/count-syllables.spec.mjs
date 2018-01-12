@@ -50,6 +50,7 @@ describe("count-syllables", () => {
 
   describe("should count correctly for some exceptions / non-exceptions", () => {
     testWord("Ameise", 3);
+    testWord("anzuerkennen", 5);
     testWord("Bedeutung", 3);
     testWord("Bakterie", 4);
     testWord("bakterie", 4);

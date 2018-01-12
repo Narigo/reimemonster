@@ -22,6 +22,7 @@ function exceptionSplitter(words, word) {
     /^(.*i)(um.*)$/gi,
     /^(.*ä)(us.*)$/gi,
     /^(.*e)(ta)(e)(be.*)$/gi,
+    /^(.*zu)(er.*)$/gi,
     /^(.*bak)(te)(ri)(e.*)$/gi
   ];
   const splitOnException = word => {
