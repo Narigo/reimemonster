@@ -3,7 +3,7 @@ export function countSyllables(text) {
   return simpleText
     .split(/[^\wäöüÄÖÜß']+/)
     .reduce(exceptionSplitter, [])
-    .map(word => word.split(/[aeiouäöüy]{1,2}/i).length - 1)
+    .map(syllables => syllables.split(/[aeiouäöüy]{1,2}/i).length - 1)
     .reduce((sum, x) => sum + x, 0);
 }
 
@@ -12,7 +12,7 @@ export function countSyllablesByLine(text) {
   return simpleText.split(/\n/).map(countSyllables);
 }
 
-function exceptionSplitter(words, word) {
+function exceptionSplitter(syllables, wordPart) {
   const exceptionsList = [
     /^(.*e)([ao].*)$/gi,
     /^(.*i)(a.*)$/gi,
@@ -25,16 +25,16 @@ function exceptionSplitter(words, word) {
     /^(.*zu)(er.*)$/gi,
     /^(.*bak)(te)(ri)(e.*)$/gi
   ];
-  const splitOnException = word => {
+  const splitOnException = part => {
     for (let i = 0; i < exceptionsList.length; i++) {
-      const matches = exceptionsList[i].exec(word);
+      const matches = exceptionsList[i].exec(part);
       if (matches) {
         const splits = matches.slice(1);
-        return splits.reduce((acc, split) => acc.concat(splitOnException(split)), []);
+        return splits.reduce((acc, split) => acc.concat(split.length > 0 ? splitOnException(split) : []), []);
       }
     }
-    return [word];
+    return [part];
   };
-  const exceptions = splitOnException(word);
-  return [...words, ...exceptions];
+  const exceptions = splitOnException(wordPart);
+  return [...syllables, ...exceptions];
 }
