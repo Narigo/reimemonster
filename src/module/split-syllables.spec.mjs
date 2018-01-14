@@ -1,19 +1,25 @@
 import assert from "assert";
-import hyphenatorPatternEn from "hyphen/patterns/en-us";
 import { splitSyllables } from "./split-syllables.mjs";
 
 describe("split-syllables", () => {
+  describe.only("simple words", () => {
+    testWord("Wort", ["Wort"]);
+    testWord("oder", ["o", "der"]);
+    testWord("Ameise", ["A", "mei", "se"]);
+    testWord("Wörter", ["Wör", "ter"]);
+    testWord("Eimer", ["Ei", "mer"]);
+    testWord("immer", ["im", "mer"]);
+  });
+
   it("should split a single word in a one element array", () => {
     assert.deepEqual(splitSyllables("wort"), ["wort"]);
   });
 
-  // FIXME this.
-  it.skip("should split a single word in a one element array", () => {
+  it("should split a single word in a one element array", () => {
     assert.deepEqual(splitSyllables("oder"), ["o", "der"]);
   });
 
-  // FIXME this.
-  it.skip("should split a three syllable word into three syllables", () => {
+  it("should split a three syllable word into three syllables", () => {
     assert.deepEqual(splitSyllables("Ameise"), ["A", "mei", "se"]);
   });
 
@@ -61,32 +67,17 @@ describe("split-syllables", () => {
       "die",
       "ser",
       "Text",
-      // FIXME "oder" -> "o", "der",
-      "oder",
+      "o",
+      "der",
       "was",
       "das",
       "ist"
     ]);
   });
 
-  it("can use different patterns as hyphenator pattern", () => {
-    assert.deepEqual(
-      splitSyllables("whatever fits you forever", {
-        hyphenatorPattern: hyphenatorPatternEn
-      }),
-      ["what", "ev", "er", "fits", "you", "for", "ev", "er"]
-    );
-    assert.deepEqual(
-      splitSyllables("There is no perfect game", {
-        hyphenatorPattern: hyphenatorPatternEn
-      }),
-      ["There", "is", "no", "per", "fect", "game"]
-    );
-  });
-
-  // It will not match \u00AD because it is not included in \w.
-  it.skip("can split words with different characters", () => {
-    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "\u00AD" }), ["o", "der"]);
-    assert.deepEqual(splitSyllables("o\u00ADder", { hyphenChar: "-" }), ["o\u00ADder"]);
-  });
+  function testWord(word, syllableList) {
+    it(`'${word}' should be split into '${syllableList.join("·")}'`, () => {
+      expect(splitSyllables(word)).toEqual(syllableList);
+    });
+  }
 });
