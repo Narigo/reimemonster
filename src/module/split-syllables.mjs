@@ -21,15 +21,15 @@ export function splitSyllables(text) {
   const simpleText = text || "";
   return simpleText
     .split(/[^\wäöüÄÖÜß']+/)
-    .reduce(splitter, []);
+    .reduce(splitter, [])
+    .filter(x => x !== "");
 }
 
 function splitter(syllables, wordPart) {
   const splitList = [
     /^([^aeiouöüäy]*[aeiouäöüy]{2})(.*[aeiouäöüy].*)$/gi,
-    /^(.*?)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy])(.*)$/gi,
-    /^(.*?[aeiouäöüy]{1,2}[^aeiouäöüy])(.*)$/gi,
-    /^(.*?[aeiouäöüy]{1,2}[^aeiouäöüy])(.*)$/gi
+    /^(.*?)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy])(.*[aeiouäöüy].*)$/gi,
+    /^(.*?[aeiouäöüy]{1,2}[^aeiouäöüy])(.*[aeiouäöüy].*)$/gi
   ];
   const splitOnPart = part => {
     for (let i = 0; i < splitList.length; i++) {

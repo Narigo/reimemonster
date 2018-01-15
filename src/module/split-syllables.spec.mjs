@@ -2,7 +2,45 @@ import assert from "assert";
 import { splitSyllables } from "./split-syllables.mjs";
 
 describe("split-syllables", () => {
-  describe.only("simple words", () => {
+  describe("exception cases", () => {
+    it("should result in an empty list for no argument", () => {
+      expect(splitSyllables()).toEqual([]);
+    });
+
+    it("should result in a list with an empty string for an empty string", () => {
+      expect(splitSyllables("")).toEqual([]);
+    });
+  });
+
+  describe("simple single words", () => {
+    testWord("der", ["der"]);
+    testWord("die", ["die"]);
+    testWord("das", ["das"]);
+    testWord("Wort", ["Wort"]);
+    testWord("kann", ["kann"]);
+    testWord("was", ["was"]);
+  });
+
+  describe("two-syllable words", () => {
+    testWord("Wörter", ["Wör", "ter"]);
+    testWord("oder", ["o", "der"]);
+    testWord("Eimer", ["Ei", "mer"]);
+    testWord("immer", ["im", "mer"]);
+  });
+
+  describe.skip("three-syllable words", () => {
+    testWord("Ameise", ["A", "mei", "se"]);
+  });
+
+  function testWord(word, syllableList) {
+    it(`'${word}' should be split into '${syllableList.join("·")}'`, () => {
+      expect(splitSyllables(word)).toEqual(syllableList);
+    });
+  }
+});
+
+describe.skip("split-syllables", () => {
+  describe("simple words", () => {
     testWord("Wort", ["Wort"]);
     testWord("oder", ["o", "der"]);
     testWord("Ameise", ["A", "mei", "se"]);
