@@ -28,7 +28,7 @@ describe("split-syllables", () => {
     testWord("immer", ["im", "mer"]);
   });
 
-  describe.skip("three-syllable words", () => {
+  describe("three-syllable words", () => {
     testWord("Ameise", ["A", "mei", "se"]);
   });
 
@@ -39,7 +39,7 @@ describe("split-syllables", () => {
   }
 });
 
-describe.skip("split-syllables", () => {
+describe("split-syllables", () => {
   describe("simple words", () => {
     testWord("Wort", ["Wort"]);
     testWord("oder", ["o", "der"]);
