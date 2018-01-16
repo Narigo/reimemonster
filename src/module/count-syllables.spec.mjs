@@ -1,5 +1,4 @@
 import assert from "assert";
-import wordlist from "./wordlists/german.mjs";
 import { countSyllables, countSyllablesByLine } from "./count-syllables.mjs";
 
 function testWord(word, num) {
@@ -72,12 +71,6 @@ describe("count-syllables", () => {
 
   it("should work well with punctuation", () => {
     assert.equal(countSyllables("Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist."), 18);
-  });
-
-  describe("dictionary-test", () => {
-    it("should make a good snapshot for the wordlist", () => {
-      expect(wordlist.split(/\n/).map(word => `${word}:${countSyllables(word)}`)).toMatchSnapshot();
-    });
   });
 });
 

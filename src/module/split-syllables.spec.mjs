@@ -1,5 +1,7 @@
 import assert from "assert";
 import { splitSyllables } from "./split-syllables.mjs";
+import {countSyllables} from "./count-syllables.mjs";
+import wordlist from "./wordlists/german.mjs";
 
 describe("split-syllables", () => {
   describe("exception cases", () => {
@@ -7,8 +9,12 @@ describe("split-syllables", () => {
       expect(splitSyllables()).toEqual([]);
     });
 
-    it("should result in a list with an empty string for an empty string", () => {
+    it("should result in an empty list for an empty string", () => {
       expect(splitSyllables("")).toEqual([]);
+    });
+
+    it("should result in an empty list for punctuation only", () => {
+      expect(splitSyllables(" .!-&(){}|>:,</\\")).toEqual([]);
     });
   });
 
@@ -19,6 +25,7 @@ describe("split-syllables", () => {
     testWord("Wort", ["Wort"]);
     testWord("kann", ["kann"]);
     testWord("was", ["was"]);
+    testWord("laut", ["laut"]);
   });
 
   describe("two-syllable words", () => {
@@ -30,23 +37,14 @@ describe("split-syllables", () => {
 
   describe("three-syllable words", () => {
     testWord("Ameise", ["A", "mei", "se"]);
+    testWord("Zeppelin", ["Zep", "pe", "lin"]);
   });
 
-  function testWord(word, syllableList) {
-    it(`'${word}' should be split into '${syllableList.join("·")}'`, () => {
-      expect(splitSyllables(word)).toEqual(syllableList);
-    });
-  }
-});
-
-describe("split-syllables", () => {
-  describe("simple words", () => {
-    testWord("Wort", ["Wort"]);
-    testWord("oder", ["o", "der"]);
-    testWord("Ameise", ["A", "mei", "se"]);
-    testWord("Wörter", ["Wör", "ter"]);
-    testWord("Eimer", ["Ei", "mer"]);
-    testWord("immer", ["im", "mer"]);
+  describe("some harder to split words", () => {
+    testWord("Aasgeier", ["Aas", "gei", "er"]);
+    testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
+    testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
+    testWord("eventuell", ["e", "ven", "tu", "ell"]);
   });
 
   it("should split a single word in a one element array", () => {

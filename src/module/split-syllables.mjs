@@ -1,21 +1,3 @@
-// counter - unnecessary here
-// .map(syllables => {
-//   console.log(text, "->", syllables);
-//   return syllables.length > 0 ? 1 : 0;
-// })
-
-// splits
-// /^([aeiouäöüy]{2})(.*)$/gi,
-//   /^([aeiouäöüy]{1,2}.+?)(.+?[aeiouäöüy]+.*)$/gi,
-//   /^(.+[aeiouäöüy]{1,2}.*)(.*[aeiouäöüy]+.*)$/gi
-
-// a few tests
-// describe.only("test", () => {
-//   testWord("Eumel", ["Eu", "mel"]);
-//   testWord("immer", ["im", "mer"]);
-//   testWord("Eimerlauf", ["Ei", "mer", "lauf"]);
-// });
-
 export function splitSyllables(text) {
   const simpleText = text || "";
   return simpleText
@@ -25,14 +7,25 @@ export function splitSyllables(text) {
 }
 
 function splitter(syllables, wordPart) {
-  // split list is a r(regular expression) and might have e(xcluded) groups to jump over (necessary when nesting re-groups)
+  // split list can have three parts
+  // r: (required) a regular expression with groups where to split the part of the word
+  // e: (optional) an array which groups to exclude from splitting (if you need to match something inside a group)
+  // d: (optional) an array which groups are done and do not need further splitting
   const splitList = [
-    // parts beginning with vowels have just that vowels
-    // { r: /^([aeiouäöüy]{1,2})(.*[aeiouäöüy].*)$/gi },
-    // two vowels usually have a split directly after them
-    // { r: /^([^aeiouäöüy]*[aeiouäöüy]{2})(.*[aeiouäöüy].*)$/gi },
-    // { r: /^(.*([^aeiouäöüy]))(\2.*[aeiouäöüy].*)$/gi, e: [2] }, // split on m-m, n-n, t-t, etc. if a vowel follows later
-    { r: /^(.+)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy]*)$/i, d: [2] } // split last part of word
+    { r: /^(.*e)([ao].*)$/gi},
+    { r: /^(.*i)(a.*)$/gi},
+    { r: /^(.*a)(o.*)$/gi},
+    { r: /^(.*[^q]u)(el.*)$/gi},
+    { r: /^(.*i)(on.*)$/gi},
+    { r: /^(.*i)(um.*)$/gi},
+    { r: /^(.*ä)(us.*)$/gi},
+    { r: /^(.*e)(ta)(e)(be.*)$/gi},
+    { r: /^(.*zu)(er.*)$/gi},
+    { r: /^(.*bak)(te)(ri)(e.*)$/gi},
+    { r: /^(.*topf)(er.*)$/i },
+    { r: /^(Aas)(gei)(er.*)$/gi },
+    { r: /^(.*[aeiouäöüy]{2})([aeiouäöüy]+.*)$/i },
+    { r: /^(.+)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy]*)$/i, d: [2] }
   ];
   const splitOnPart = part => {
     for (let i = 0; i < splitList.length; i++) {
