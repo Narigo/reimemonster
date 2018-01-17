@@ -14,5 +14,5 @@ Handler.extensions_map.update({
 
 httpd = SocketServer.TCPServer(("", PORT), Handler)
 
-print "Go to http://localhost:{port}/docs/ to see it running".format(port=PORT)
+print "Go to http://localhost:{port}/ to see it running".format(port=PORT)
 httpd.serve_forever()
