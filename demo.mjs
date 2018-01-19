@@ -1,5 +1,4 @@
-import {countSyllablesByLine} from "./src/module/count-syllables.mjs";
-import {findRhyme} from "./src/module/find-rhyme.mjs";
+import { countSyllablesByLine } from "./src/module/count-syllables.mjs";
 
 const $poem = document.getElementById("poem");
 const $helper = document.getElementById("helper");
@@ -11,11 +10,13 @@ $poem.focus();
 $poem.oninput = () => {
   const textValue = $poem.value;
   const countedSyllables = countSyllablesByLine(textValue);
-  $helper.innerHTML = countedSyllables.reduce((lastLineInfos, syllablesInLine) => {
-      const lineInfos = {...lastLineInfos};
+  $helper.innerHTML = countedSyllables.reduce(
+    (lastLineInfos, syllablesInLine) => {
+      const lineInfos = { ...lastLineInfos };
       lineInfos.lineNumber = lastLineInfos.lineNumber + 1;
       lineInfos.syllables = syllablesInLine;
-      const shouldWarn = (syllablesInLine !== 0 && lastLineInfos.syllables !== 0 && lineInfos.syllables !== lastLineInfos.syllables);
+      const shouldWarn =
+        syllablesInLine !== 0 && lastLineInfos.syllables !== 0 && lineInfos.syllables !== lastLineInfos.syllables;
       lineInfos.html = `${lineInfos.html}<span class="${shouldWarn ? "warn" : "ok"}">${syllablesInLine}</span><br />`;
       return lineInfos;
     },
@@ -23,18 +24,21 @@ $poem.oninput = () => {
       lineNumber: 0,
       syllables: 0,
       html: ""
-    }).html;
+    }
+  ).html;
   const height = Math.max(minHeight, $helper.clientHeight);
   $poem.style.height = `${height}px`;
 };
 
+const worker = new Worker("./demo-worker.mjs");
+worker.addEventListener("message", message => {
+  $rhymes.innerText = message.data;
+});
+
 $poem.onselect = () => {
   const textValue = $poem.value;
   const word = getWordFromPosition(textValue, $poem.selectionStart, $poem.selectionEnd);
-  if (word.length >= 4) {
-    const rhymes = findRhyme(word);
-    $rhymes.innerText = `${rhymes.join(", ")}`;
-  }
+  worker.postMessage(word);
 };
 
 $rhymes.addEventListener("pointerdown", () => {
