@@ -1,6 +1,4 @@
-// import { findRhyme } from "./src/module/find-rhyme.mjs";
-
-const findRhyme = text => ["dies", "ist", "ein", "test"];
+import { findRhyme } from "./src/module/find-rhyme.mjs";
 
 self.addEventListener(
   "message",

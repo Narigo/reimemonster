@@ -30,7 +30,7 @@ $poem.oninput = () => {
   $poem.style.height = `${height}px`;
 };
 
-const worker = new Worker("./demo-worker.mjs");
+const worker = new Worker("./demo-worker.mjs", { type: "module" });
 worker.addEventListener("message", message => {
   $rhymes.innerText = message.data;
 });
