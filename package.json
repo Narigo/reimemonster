@@ -5,6 +5,7 @@
   "main": "src/module/index.mjs",
   "scripts": {
     "coverage": "jest --coverage",
+    "build-demo": "rollup demo-worker.mjs -o demo-worker.js -f es",
     "demo": "python server.py",
     "format": "prettier --write **/*.{m,}js",
     "rhyme": "node --experimental-modules src/cli/cli-find.mjs",
@@ -23,7 +24,8 @@
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "jest": "^22.0.4",
-    "prettier": "^1.9.2"
+    "prettier": "^1.9.2",
+    "rollup": "^0.54.1"
   },
   "dependencies": {
     "hyphen": "^1.0.2",
