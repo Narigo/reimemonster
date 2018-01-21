@@ -32,12 +32,14 @@ $poem.oninput = () => {
 
 const worker = new Worker("./demo-worker.js");
 worker.addEventListener("message", message => {
+  console.log("received input from worker");
   $rhymes.innerText = message.data;
 });
 
 $poem.onselect = () => {
   const textValue = $poem.value;
   const word = getWordFromPosition(textValue, $poem.selectionStart, $poem.selectionEnd);
+  console.log("sending word to worker", word);
   worker.postMessage(word);
 };
 
