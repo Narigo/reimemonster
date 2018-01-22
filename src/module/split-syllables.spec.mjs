@@ -1,7 +1,5 @@
 import assert from "assert";
 import { splitSyllables } from "./split-syllables.mjs";
-import {countSyllables} from "./count-syllables.mjs";
-import wordlist from "./wordlists/german.mjs";
 
 describe("split-syllables", () => {
   describe("exception cases", () => {
