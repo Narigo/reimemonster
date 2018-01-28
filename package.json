@@ -1,6 +1,6 @@
 {
   "name": "reimemonster",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Counts syllables in texts.",
   "main": "src/module/index.mjs",
   "scripts": {
