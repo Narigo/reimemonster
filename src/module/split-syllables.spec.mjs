@@ -40,6 +40,9 @@ describe("split-syllables", () => {
 
   describe("some harder to split words", () => {
     testWord("Aasgeier", ["Aas", "gei", "er"]);
+    testWord("Aachen", ["Aa", "chen"]);
+    testWord("Aachener", ["Aa", "chen", "er"]);
+    testWord("abarbeiten", ["ab", "ar", "bei", "ten"]);
     testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
     testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
     testWord("eventuell", ["e", "ven", "tu", "ell"]);

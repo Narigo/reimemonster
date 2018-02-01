@@ -12,6 +12,7 @@ function splitter(syllables, wordPart) {
   // e: (optional) an array which groups to exclude from splitting (if you need to match something inside a group)
   // d: (optional) an array which groups are done and do not need further splitting
   const splitList = [
+    { r: /^(.*[^s])(chen)(.*)$/gi, d: [2] },
     { r: /^(.*e)([ao].*)$/gi },
     { r: /^(.*i)(a.*)$/gi },
     { r: /^(.*a)(o.*)$/gi },
@@ -23,6 +24,7 @@ function splitter(syllables, wordPart) {
     { r: /^(.*zu)(er.*)$/gi },
     { r: /^(.*bak)(te)(ri)(e.*)$/gi },
     { r: /^(.*topf)(er.*)$/i },
+    { r: /^(ab)(ar)(.*)$/gi },
     { r: /^(Aas)(gei)(er.*)$/gi },
     { r: /^(.*[aeiouäöüy]{2})([aeiouäöüy]+.*)$/i },
     { r: /^(.+)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy]*)$/i, d: [2] }
