@@ -40,11 +40,12 @@ $poem.onselect = () => {
   const textValue = $poem.value;
   const word = getWordFromPosition(textValue, $poem.selectionStart, $poem.selectionEnd);
   console.log("sending word to worker", word);
+  $rhymes.classList.remove("hidden");
   worker.postMessage(word);
 };
 
 $rhymes.addEventListener("pointerdown", () => {
-  $rhymes.classList.toggle("hidden");
+  $rhymes.classList.add("hidden");
 });
 
 function getWordFromPosition(text, positionStart, positionEnd) {
