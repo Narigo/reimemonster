@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reimemonster-Demo</title>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Permanent+Marker" rel="stylesheet">
   <style type="text/css">
     :root {
       --background-color: #EEEEEE;
@@ -12,6 +14,9 @@
       --footer-background-color: var(--main-color);
       --footer-text-color: var(--highlight2-color);
       --header-text-color: #FFFFFF;
+      --poem-font: 'Inconsolata', monospace;
+      --regular-font: 'Inconsolata', monospace;
+      --title-font: 'Permanent Marker', cursive;
     }
 
     html, body {
@@ -19,7 +24,7 @@
       padding: 0;
       min-height: 100%;
       background-color: var(--background-color);
-      font-family: sans-serif;
+      font-family: var(--regular-font);
       color: var(--main-color);
     }
 
@@ -35,6 +40,7 @@
       flex-basis: 5rem;
       flex-shrink: 0;
       color: var(--header-text-color);
+      font-family: var(--title-font);
     }
 
     footer {
@@ -45,16 +51,10 @@
     }
 
     #demo {
-      margin: 0 25px 50px 0;
+      margin: 0 25px 0;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-    }
-
-    #demo .rhymes-wrap {
-      flex-basis: 2rem;
-      flex-shrink: 0;
-      margin: 25px;
     }
 
     #demo .poem-wrap {
@@ -84,13 +84,11 @@
     }
 
     #poem {
-      font-family: monospace;
+      font-family: var(--poem-font);
       font-size: x-large;
       border: 0;
-      width: 80%;
-      margin: 0 25px;
       border-right: 5px solid var(--main-color);
-      box-shadow: inset 0 0 0 0 var(--main-color);
+      box-shadow: var(--main-color) 0 0 10px inset;
       background: var(--background-color);
       white-space: nowrap;
     }
@@ -98,7 +96,6 @@
     #helper {
       height: 100%;
       padding: 2px 20px;
-      font-family: monospace;
       font-size: x-large;
     }
 
@@ -118,17 +115,14 @@
   <p>Einfacher Gedichte schreiben.</p>
 </header>
 <section id="demo">
-  <div class="rhymes-wrap">
-    <p class="help-text">Markiere ein Wort, um Reimvorschläge zu erhalten!</p>
-    <div id="rhymes" class="hidden"></div>
-  </div>
   <div class="poem-wrap">
     <textarea id="poem"></textarea>
     <div id="helper"></div>
   </div>
+  <div id="rhymes" class="hidden"></div>
 </section>
 <footer>
-  &copy; 2018 Jörn Bernhardt
+  <p class="help-text">&copy; 2018 Jörn Bernhardt - Markiere ein Wort, um Reimvorschläge zu erhalten!</p>
 </footer>
 <script type="module" src="demo.mjs"></script>
 </body>
