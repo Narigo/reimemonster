@@ -46,6 +46,7 @@ $poem.onselect = () => {
 
 $rhymes.addEventListener("pointerdown", () => {
   $rhymes.classList.add("hidden");
+  window.getSelection().collapse($poem, 0);
 });
 
 function getWordFromPosition(text, positionStart, positionEnd) {
