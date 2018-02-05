@@ -26,8 +26,8 @@ $poem.oninput = () => {
       html: ""
     }
   ).html;
-  const height = Math.max(minHeight, $helper.clientHeight);
-  $poem.style.height = `${height}px`;
+  // const height = Math.max(minHeight, $helper.clientHeight);
+  // $poem.style.height = `${height}px`;
 };
 
 const worker = new Worker("./demo-worker.js");

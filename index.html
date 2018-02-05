@@ -7,13 +7,32 @@
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Permanent+Marker" rel="stylesheet">
   <style type="text/css">
     :root {
-      --background-color: #EEEEEE;
-      --highlight-color: #66CCA2;
-      --highlight2-color: #84C2A6;
-      --main-color: #222222;
-      --footer-background-color: var(--main-color);
-      --footer-text-color: var(--highlight2-color);
-      --header-text-color: #FFFFFF;
+      --colors-creativity-bright: #B1C3F7;
+      --colors-creativity-light: #6686E6;
+      --colors-creativity-main: #1749DF;
+      --colors-creativity-shade: #08298B;
+      --colors-creativity-dark: #020F35;
+
+      --colors-productivity-bright: #FFB4AE;
+      --colors-productivity-light: #FF6B5F;
+      --colors-productivity-main: #FF1300;
+      --colors-productivity-shade: #CD0F00;
+      --colors-productivity-dark: #4E0600;
+
+      --background-color: var(--colors-creativity-bright);
+      --highlight-color: var(--colors-creativity-shade);
+      --highlight2-color: var(--colors-creativity-dark);
+      --main-color: var(--colors-creativity-main);
+
+      --helper-text-color: var(--colors-productivity-dark);
+      --helper-background-color: var(--colors-creativity-bright);
+
+      --header-background-color: var(--colors-productivity-bright);
+      --header-text-color: var(--colors-productivity-dark);
+
+      --footer-background-color: var(--colors-productivity-bright);
+      --footer-text-color: var(--colors-productivity-dark);
+
       --poem-font: 'Inconsolata', monospace;
       --regular-font: 'Inconsolata', monospace;
       --title-font: 'Permanent Marker', cursive;
@@ -36,22 +55,30 @@
 
     header {
       padding: 25px 25px 0 25px;
-      background: linear-gradient(var(--highlight-color), var(--highlight2-color));
+      background: linear-gradient(var(--colors-productivity-light), var(--colors-productivity-bright));
       flex-basis: 5rem;
       flex-shrink: 0;
       color: var(--header-text-color);
       font-family: var(--title-font);
     }
 
+    h1 {
+      font-size: xx-large;
+    }
+
+    h2 {
+      font-size: larger;
+    }
+
     footer {
-      background-color: var(--footer-background-color);
+      background: linear-gradient(var(--colors-productivity-bright), var(--colors-productivity-light));
       color: var(--footer-text-color);
       padding: 25px;
       flex-shrink: 0;
     }
 
     #demo {
-      margin: 0 25px 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -64,12 +91,13 @@
     }
 
     #rhymes {
-      background-color: #fff;
+      background-color: var(--helper-background-color);
       border: 5px solid var(--main-color);
       border-radius: 15px;
       bottom: 10%;
       box-shadow: #000000 0 0 50px;
       box-sizing: border-box;
+      color: var(--helper-text-color);
       left: 10%;
       overflow: scroll;
       padding: 25px;
@@ -90,21 +118,16 @@
       border-right: 5px solid var(--main-color);
       box-shadow: var(--main-color) 0 0 10px inset;
       background: var(--background-color);
+      padding: 0 25px;
       white-space: nowrap;
+      width: -webkit-fill-available;
     }
 
     #helper {
       height: 100%;
       padding: 2px 20px;
       font-size: x-large;
-    }
-
-    #helper .ok {
-      color: var(--main-color);
-    }
-
-    #helper .warn {
-      color: var(--highlight-color);
+      width: 40px;
     }
 
   </style>
@@ -112,7 +135,7 @@
 <body>
 <header>
   <h1>Reimemonster Demo</h1>
-  <p>Einfacher Gedichte schreiben.</p>
+  <h2>Einfacher Gedichte schreiben.</h2>
 </header>
 <section id="demo">
   <div class="poem-wrap">
