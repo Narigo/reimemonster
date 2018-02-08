@@ -19,6 +19,10 @@
       --colors-productivity-shade: #CC0A00;
       --colors-productivity-dark: #330300;
 
+      --colors-background: #FFFFFF;
+      --colors-text: #000000;
+
+      /*
       --background-color: var(--colors-creativity-bright);
       --highlight-color: var(--colors-creativity-shade);
       --highlight2-color: var(--colors-creativity-dark);
@@ -32,6 +36,21 @@
 
       --footer-background-color: var(--colors-productivity-bright);
       --footer-text-color: var(--colors-productivity-dark);
+      */
+
+      --background-color: var(--colors-background);
+      --highlight-color: var(--colors-creativity-light);
+      --highlight2-color: var(--colors-productivity-light);
+      --main-color: var(--colors-text);
+
+      --helper-text-color: var(--colors-text);
+      --helper-background-color: var(--colors-background);
+
+      --header-background-color: var(--colors-background);
+      --header-text-color: var(--colors-text);
+
+      --footer-background-color: var(--colors-background);
+      --footer-text-color: var(--colors-text);
 
       --poem-font: 'Inconsolata', monospace;
       --regular-font: 'Inconsolata', monospace;
@@ -55,7 +74,7 @@
 
     header {
       padding: 25px 25px 0 25px;
-      background: linear-gradient(var(--colors-productivity-light), var(--colors-productivity-bright));
+      background: var(--colors-background);
       flex-basis: 5rem;
       flex-shrink: 0;
       color: var(--header-text-color);
@@ -71,7 +90,7 @@
     }
 
     footer {
-      background: linear-gradient(var(--colors-productivity-bright), var(--colors-productivity-light));
+      background: var(--colors-background);
       color: var(--footer-text-color);
       padding: 25px;
       flex-shrink: 0;
@@ -112,12 +131,13 @@
     }
 
     #poem {
-      font-family: var(--poem-font);
-      font-size: x-large;
+      background: var(--background-color);
       border: 0;
       border-right: 5px solid var(--main-color);
       box-shadow: var(--main-color) 0 0 10px inset;
-      background: var(--background-color);
+      font-family: var(--poem-font);
+      font-size: x-large;
+      min-height: 10em;
       padding: 0 25px;
       white-space: nowrap;
       width: -webkit-fill-available;
@@ -128,6 +148,14 @@
       padding: 2px 20px;
       font-size: x-large;
       width: 40px;
+    }
+
+    #helper .ok {
+      color: var(--main-color);
+    }
+
+    #helper .warn {
+      color: var(--highlight-color);
     }
 
   </style>
