@@ -21,6 +21,7 @@
 
       --colors-background: #FFFFFF;
       --colors-text: #000000;
+      --colors-subtle-text: #D0D0D0;
 
       /*
       --background-color: var(--colors-creativity-bright);
@@ -41,6 +42,7 @@
       --background-color: var(--colors-background);
       --highlight-color: var(--colors-creativity-light);
       --highlight2-color: var(--colors-productivity-light);
+      --divider-color: var(--colors-subtle-text);
       --main-color: var(--colors-text);
 
       --helper-text-color: var(--colors-text);
@@ -55,6 +57,8 @@
       --poem-font: 'Inconsolata', monospace;
       --regular-font: 'Inconsolata', monospace;
       --title-font: 'Permanent Marker', cursive;
+
+      --shadow-width: 25px;
     }
 
     html, body {
@@ -133,8 +137,11 @@
     #poem {
       background: var(--background-color);
       border: 0;
-      border-right: 5px solid var(--main-color);
-      box-shadow: var(--main-color) 0 0 10px inset;
+      border-right: 1px solid var(--divider-color);
+      box-shadow:
+        var(--shadow-width) 0 var(--shadow-width) calc(-1 * var(--shadow-width))  var(--main-color) inset,
+        0 calc(-1 * var(--shadow-width)) var(--shadow-width) calc(-1 * var(--shadow-width))  var(--main-color) inset,
+        0 var(--shadow-width) var(--shadow-width) calc(-1 * var(--shadow-width))  var(--main-color) inset;
       font-family: var(--poem-font);
       font-size: x-large;
       min-height: 10em;
