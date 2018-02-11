@@ -4,7 +4,8 @@
 
 This repository contains helpers for making poems. For example it counts syllables and helps you find rhyming words.
 
-Currently only usable in German.
+Currently only usable in German. See it in action on the [Reimemonster demonstration 
+page](https://narigo.github.com/reimemonster).
 
 ## Usage
 
