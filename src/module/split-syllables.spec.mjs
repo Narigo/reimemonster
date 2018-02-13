@@ -46,6 +46,7 @@ describe("split-syllables", () => {
     testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
     testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
     testWord("eventuell", ["e", "ven", "tu", "ell"]);
+    testWord("Bahnübergang", ["Bahn", "ü", "ber", "gang"]);
   });
 
   it("should split a single word in a one element array", () => {
