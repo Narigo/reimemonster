@@ -24,9 +24,13 @@ function splitter(syllables, wordPart) {
     { r: /^(.*zu)(er.*)$/gi },
     { r: /^(.*bak)(te)(ri)(e.*)$/gi },
     { r: /^(.*topf)(er.*)$/i },
-    { r: /^(ab)(ar)(.*)$/gi },
+    { r: /^(.*)(brech)(.*)$/i, d: [2] },
+    { r: /^(.*ech)(er.*)$/i },
+    { r: /^(ab)(ar)(.*)$/gi, d: [1, 2] },
     { r: /^(Aas)(gei)(er.*)$/gi },
     { r: /^(Bahn)(ü)(ber)(gang)$/gi },
+    { r: /^(.*ge)(schwin)(dig.*)$/gi, d: [2] },
+    { r: /^(.*)(keit)$/gi, d: [2] },
     { r: /^(.*[aeiouäöüy]{2})([aeiouäöüy]+.*)$/i },
     { r: /^(.+)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy]*)$/i, d: [2] }
   ];

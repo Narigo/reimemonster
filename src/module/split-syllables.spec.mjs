@@ -43,10 +43,12 @@ describe("split-syllables", () => {
     testWord("Aachen", ["Aa", "chen"]);
     testWord("Aachener", ["Aa", "chen", "er"]);
     testWord("abarbeiten", ["ab", "ar", "bei", "ten"]);
-    testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
-    testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
-    testWord("eventuell", ["e", "ven", "tu", "ell"]);
+    testWord("Abbrecher", ["Ab", "brech", "er"]);
     testWord("Bahnübergang", ["Bahn", "ü", "ber", "gang"]);
+    testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
+    testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
+    testWord("eventuell", ["e", "ven", "tu", "ell"]);
+    testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
   });
 
   it("should split a single word in a one element array", () => {
