@@ -1,5 +1,5 @@
 import assert from "assert";
-import { splitSyllables } from "./split-syllables.mjs";
+import {splitSyllables} from "./split-syllables.mjs";
 
 describe("split-syllables", () => {
   describe("exception cases", () => {
@@ -43,7 +43,10 @@ describe("split-syllables", () => {
     testWord("Aachen", ["Aa", "chen"]);
     testWord("Aachener", ["Aa", "chen", "er"]);
     testWord("abarbeiten", ["ab", "ar", "bei", "ten"]);
+    testWord("Abbaufortschritt", ["Ab", "bau", "fort", "schritt"]);
+    testWord("Abbestellens", ["Ab", "be", "stel", "lens"]);
     testWord("Abblendung", ["Ab", "blen", "dung"]);
+    testWord("Abblendschalter", ["Ab", "blend", "schal", "ter"]);
     testWord("Abbrecher", ["Ab", "brech", "er"]);
     testWord("Abbremsung", ["Ab", "brem", "sung"]);
     testWord("Abbuchens", ["Ab", "bu", "chens"]);
