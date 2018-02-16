@@ -7,7 +7,7 @@ describe("dictionary-test", () => {
     expect(wordlist.split(/\n/).map(word => `${word}:${countSyllables(word)}`)).toMatchSnapshot();
   });
 
-  it.skip("split-syllables should have a good snapshot", () => {
+  it("split-syllables should have a good snapshot", () => {
     expect(wordlist.split(/\n/).map(word => `${word}:${splitSyllables(word).join("•")}`)).toMatchSnapshot();
   });
 

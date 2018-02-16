@@ -47,6 +47,11 @@ describe("split-syllables", () => {
     testWord("Abbestellens", ["Ab", "be", "stel", "lens"]);
     testWord("Abblendung", ["Ab", "blen", "dung"]);
     testWord("Abblendschalter", ["Ab", "blend", "schal", "ter"]);
+    testWord("Abbaufortschritt", ["Ab", "bau", "fort", "schritt"]);
+    testWord("Abbauleitzentrale", ["Ab", "bau", "leit", "zen", "tra", "le"]);
+    testWord("Abbaumaschine", ["Ab", "bau", "ma", "schi", "ne"]);
+    testWord("Abbausystem", ["Ab", "bau", "sys", "tem"]);
+    testWord("Abbausysteme", ["Ab", "bau", "sys", "te", "me"]);
     testWord("Abbrecher", ["Ab", "brech", "er"]);
     testWord("Abbremsung", ["Ab", "brem", "sung"]);
     testWord("Abbuchens", ["Ab", "bu", "chens"]);
