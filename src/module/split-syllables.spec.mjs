@@ -59,6 +59,7 @@ describe("split-syllables", () => {
     testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
     testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
     testWord("eventuell", ["e", "ven", "tu", "ell"]);
+    testWord("Polystyrol", ["Po", "ly", "styr", "ol"]);
     testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
   });
 
