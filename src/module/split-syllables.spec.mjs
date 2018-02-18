@@ -38,6 +38,10 @@ describe("split-syllables", () => {
     testWord("Zeppelin", ["Zep", "pe", "lin"]);
   });
 
+  describe("undefined debug", () => {
+    testWord("Bleistift", ["Blei", "stift"]);
+  });
+
   describe("some harder to split words", () => {
     testWord("Aasgeier", ["Aas", "gei", "er"]);
     testWord("Aachen", ["Aa", "chen"]);
@@ -54,8 +58,10 @@ describe("split-syllables", () => {
     testWord("Abbausysteme", ["Ab", "bau", "sys", "te", "me"]);
     testWord("Abbrecher", ["Ab", "brech", "er"]);
     testWord("Abbremsung", ["Ab", "brem", "sung"]);
+    testWord("Abbruchunternehmen", ["Ab", "bruch", "un", "ter", "neh", "men"]);
     testWord("Abbuchens", ["Ab", "bu", "chens"]);
     testWord("Bahnübergang", ["Bahn", "ü", "ber", "gang"]);
+    testWord("Bleistift", ["Blei", "stift"]);
     testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
     testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
     testWord("eventuell", ["e", "ven", "tu", "ell"]);

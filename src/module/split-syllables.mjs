@@ -30,14 +30,15 @@ function splitter(syllables, wordPart) {
     { r: /^(.*)(sys)(te)(me.*)$/i, d: [2, 3] },
     { r: /^(.*)(sys)(tem)$/i, d: [2, 3] },
     { r: /^(.*)(brech)(.*)$/i, d: [2] },
-    { r: /^(.*)(st[aeiouäöü][^aeiouäöüy])(.*)$/i, d:[2] },
+    { r: /^(.*)(bruch)(.*)$/i, d: [2] },
+    { r: /^(.*)(st[aeiouäöü][^aeiouäöü])(.*)$/i, d: [2] },
     { r: /^(.*ech)(er.*)$/i },
     { r: /^(ab)(ar)(.*)$/gi, d: [1, 2] },
     { r: /^(.*)(schal)(.*)$/gi, d: [2] },
     { r: /^(ab)(b[^aeiouäöüy][aeiouäöüy][^aeiouäöüy])(.*)$/gi, d: [1, 2] },
     { r: /^(Aas)(gei)(er.*)$/gi },
     { r: /^(Bahn)(ü)(ber)(gang)$/gi },
-    { r: /^(Po)(ly)(styr)(ol)$/i, d:[1, 2, 3, 4] },
+    { r: /^(Po)(ly)(styr)(ol)$/i, d: [1, 2, 3, 4] },
     { r: /^(.*ge)(schwin)(dig.*)$/gi, d: [2] },
     { r: /^(.*)(keit)$/gi, d: [2] },
     { r: /^(.*[aeiouäöüy]{2})([aeiouäöüy]+.*)$/i },
@@ -68,13 +69,14 @@ function splitter(syllables, wordPart) {
   const mergeParts = parts =>
     parts.reduce((list, part, idx) => {
       if (idx > 0) {
-        const lastPart = list[idx - 1];
+        const lastIndex = list.length - 1;
+        const lastPart = list[lastIndex];
         const lastPartIsConsonantOnly = /^[^aeiouäöüy]+$/i.test(lastPart);
         const thisPartIsConsonantOnly = /^[^aeiouäöüy]+$/i.test(part);
         if (!lastPartIsConsonantOnly && thisPartIsConsonantOnly) {
-          return [...list.slice(0, list.length - 1), list[idx - 1] + part];
+          return [...list.slice(0, lastIndex), list[lastIndex] + part];
         } else if (lastPartIsConsonantOnly) {
-          return [...list.slice(0, list.length - 1), list[idx - 1] + part];
+          return [...list.slice(0, lastIndex), list[lastIndex] + part];
         }
       }
       return [...list, part];
