@@ -128,7 +128,7 @@ describe("split-syllables", () => {
       testWord("Abbuchung", ["Ab", "bu", "chung"]);
     });
 
-    describe.only("B-Z", () => {
+    describe("B-Z", () => {
       testWord("Bahnübergang", ["Bahn", "ü", "ber", "gang"]);
       testWord("Bleistift", ["Blei", "stift"]);
       testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);

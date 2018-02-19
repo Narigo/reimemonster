@@ -23,7 +23,8 @@ function exceptionSplitter(syllables, wordPart) {
     /^(.*ä)(us.*)$/gi,
     /^(.*e)(ta)(e)(be.*)$/gi,
     /^(.*zu)(er.*)$/gi,
-    /^(.*bak)(te)(ri)(e.*)$/gi
+    /^(.*bak)(te)(ri)(e.*)$/gi,
+    /^(no)(ah)$/gi
   ];
   const splitOnException = part => {
     for (let i = 0; i < exceptionsList.length; i++) {
