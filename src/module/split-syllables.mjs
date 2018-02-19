@@ -38,6 +38,7 @@ function splitter(syllables, wordPart) {
     { r: /^(ab)(b[^aeiouäöüy][aeiouäöüy][^aeiouäöüy])(.*)$/gi, d: [1, 2] },
     { r: /^(Aas)(gei)(er.*)$/gi },
     { r: /^(Ab)(bu)(chung)$/i, d: [1, 2, 3] },
+    { r: /^(No)(ah)$/i, d: [1, 2] },
     { r: /^(Bahn)(ü)(ber)(gang)$/gi },
     { r: /^(Po)(ly)(styr)(ol)$/i, d: [1, 2, 3, 4] },
     { r: /^(.*ge)(schwin)(dig.*)$/gi, d: [2] },

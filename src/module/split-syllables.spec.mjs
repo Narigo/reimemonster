@@ -128,12 +128,13 @@ describe("split-syllables", () => {
       testWord("Abbuchung", ["Ab", "bu", "chung"]);
     });
 
-    describe("B-Z", () => {
+    describe.only("B-Z", () => {
       testWord("Bahnübergang", ["Bahn", "ü", "ber", "gang"]);
       testWord("Bleistift", ["Blei", "stift"]);
       testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
-      testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
       testWord("eventuell", ["e", "ven", "tu", "ell"]);
+      testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
+      testWord("Noah", ["No", "ah"]);
       testWord("Polystyrol", ["Po", "ly", "styr", "ol"]);
       testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
     });
