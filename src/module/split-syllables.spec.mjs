@@ -1,5 +1,5 @@
 import assert from "assert";
-import {splitSyllables} from "./split-syllables.mjs";
+import { splitSyllables } from "./split-syllables.mjs";
 
 describe("split-syllables", () => {
   describe("exception cases", () => {
@@ -40,33 +40,6 @@ describe("split-syllables", () => {
 
   describe("undefined debug", () => {
     testWord("Bleistift", ["Blei", "stift"]);
-  });
-
-  describe("some harder to split words", () => {
-    testWord("Aasgeier", ["Aas", "gei", "er"]);
-    testWord("Aachen", ["Aa", "chen"]);
-    testWord("Aachener", ["Aa", "chen", "er"]);
-    testWord("abarbeiten", ["ab", "ar", "bei", "ten"]);
-    testWord("Abbaufortschritt", ["Ab", "bau", "fort", "schritt"]);
-    testWord("Abbestellens", ["Ab", "be", "stel", "lens"]);
-    testWord("Abblendung", ["Ab", "blen", "dung"]);
-    testWord("Abblendschalter", ["Ab", "blend", "schal", "ter"]);
-    testWord("Abbaufortschritt", ["Ab", "bau", "fort", "schritt"]);
-    testWord("Abbauleitzentrale", ["Ab", "bau", "leit", "zen", "tra", "le"]);
-    testWord("Abbaumaschine", ["Ab", "bau", "ma", "schi", "ne"]);
-    testWord("Abbausystem", ["Ab", "bau", "sys", "tem"]);
-    testWord("Abbausysteme", ["Ab", "bau", "sys", "te", "me"]);
-    testWord("Abbrecher", ["Ab", "brech", "er"]);
-    testWord("Abbremsung", ["Ab", "brem", "sung"]);
-    testWord("Abbruchunternehmen", ["Ab", "bruch", "un", "ter", "neh", "men"]);
-    testWord("Abbuchens", ["Ab", "bu", "chens"]);
-    testWord("Bahnübergang", ["Bahn", "ü", "ber", "gang"]);
-    testWord("Bleistift", ["Blei", "stift"]);
-    testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
-    testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
-    testWord("eventuell", ["e", "ven", "tu", "ell"]);
-    testWord("Polystyrol", ["Po", "ly", "styr", "ol"]);
-    testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
   });
 
   it("should split a single word in a one element array", () => {
@@ -131,6 +104,39 @@ describe("split-syllables", () => {
       "das",
       "ist"
     ]);
+  });
+
+  describe("Dictionary tests", () => {
+    describe("A", () => {
+      testWord("Aasgeier", ["Aas", "gei", "er"]);
+      testWord("Aachen", ["Aa", "chen"]);
+      testWord("Aachener", ["Aa", "chen", "er"]);
+      testWord("abarbeiten", ["ab", "ar", "bei", "ten"]);
+      testWord("Abbaufortschritt", ["Ab", "bau", "fort", "schritt"]);
+      testWord("Abbestellens", ["Ab", "be", "stel", "lens"]);
+      testWord("Abblendung", ["Ab", "blen", "dung"]);
+      testWord("Abblendschalter", ["Ab", "blend", "schal", "ter"]);
+      testWord("Abbaufortschritt", ["Ab", "bau", "fort", "schritt"]);
+      testWord("Abbauleitzentrale", ["Ab", "bau", "leit", "zen", "tra", "le"]);
+      testWord("Abbaumaschine", ["Ab", "bau", "ma", "schi", "ne"]);
+      testWord("Abbausystem", ["Ab", "bau", "sys", "tem"]);
+      testWord("Abbausysteme", ["Ab", "bau", "sys", "te", "me"]);
+      testWord("Abbrecher", ["Ab", "brech", "er"]);
+      testWord("Abbremsung", ["Ab", "brem", "sung"]);
+      testWord("Abbruchunternehmen", ["Ab", "bruch", "un", "ter", "neh", "men"]);
+      testWord("Abbuchens", ["Ab", "bu", "chens"]);
+      testWord("Abbuchung", ["Ab", "bu", "chung"]);
+    });
+
+    describe("B-Z", () => {
+      testWord("Bahnübergang", ["Bahn", "ü", "ber", "gang"]);
+      testWord("Bleistift", ["Blei", "stift"]);
+      testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
+      testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
+      testWord("eventuell", ["e", "ven", "tu", "ell"]);
+      testWord("Polystyrol", ["Po", "ly", "styr", "ol"]);
+      testWord("Zeppeline", ["Zep", "pe", "li", "ne"]);
+    });
   });
 
   function testWord(word, syllableList) {
