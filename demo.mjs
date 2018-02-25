@@ -44,7 +44,7 @@ $poem.onselect = () => {
   worker.postMessage(word);
 };
 
-$rhymes.addEventListener("pointerdown", () => {
+$rhymes.addEventListener("pointerup", () => {
   $rhymes.classList.add("hidden");
   window.getSelection().collapse($poem, 0);
 });
