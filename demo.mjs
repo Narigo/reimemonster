@@ -44,6 +44,15 @@ $poem.onselect = () => {
   worker.postMessage(word);
 };
 
+const ESC_KEYCODE = 27;
+document.addEventListener("keyup", event => {
+  if (event.keyCode === ESC_KEYCODE && !$rhymes.classList.contains("hidden")) {
+    event.preventDefault();
+    event.stopPropagation();
+    $rhymes.classList.add("hidden");
+  }
+});
+
 $rhymes.addEventListener("pointerup", () => {
   $rhymes.classList.add("hidden");
   window.getSelection().collapse($poem, 0);
