@@ -3,13 +3,15 @@ import { countSyllablesByLine } from "./src/module/count-syllables.mjs";
 const $poem = document.getElementById("poem");
 const $helper = document.getElementById("helper");
 const $rhymes = document.getElementById("rhymes");
-const minHeight = $poem.clientHeight;
+const lastPoem = localStorage.getItem("poem");
 
+$poem.value = lastPoem + $poem.value;
 $poem.focus();
 
 $poem.oninput = () => {
   const textValue = $poem.value;
   const countedSyllables = countSyllablesByLine(textValue);
+  localStorage.setItem("poem", textValue);
   $helper.innerHTML = countedSyllables.reduce(
     (lastLineInfos, syllablesInLine) => {
       const lineInfos = { ...lastLineInfos };
@@ -26,8 +28,6 @@ $poem.oninput = () => {
       html: ""
     }
   ).html;
-  // const height = Math.max(minHeight, $helper.clientHeight);
-  // $poem.style.height = `${height}px`;
 };
 
 const worker = new Worker("./demo-worker.js");
@@ -46,10 +46,10 @@ $poem.onselect = () => {
 
 const ESC_KEYCODE = 27;
 document.addEventListener("keyup", event => {
-  if (event.keyCode === ESC_KEYCODE && !$rhymes.classList.contains("hidden")) {
+  if (event.keyCode === ESC_KEYCODE) {
     event.preventDefault();
     event.stopPropagation();
-    $rhymes.classList.add("hidden");
+    $rhymes.classList.toggle("hidden");
   }
 });
 
