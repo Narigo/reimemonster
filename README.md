@@ -2,10 +2,13 @@
 [![Build Status](https://travis-ci.org/Narigo/reimemonster.svg?branch=master)](https://travis-ci.org/Narigo/reimemonster)
 [![Coverage Status](https://coveralls.io/repos/github/Narigo/reimemonster/badge.svg?branch=master)](https://coveralls.io/github/Narigo/reimemonster?branch=master)
 
-This repository contains helpers for making poems. For example it counts syllables and helps you find rhyming words.
+This repository contains helpers for making poems. For example it counts syllables and helps you 
+find rhyming words.
 
 Currently only usable in German. See it in action on the [Reimemonster demonstration 
-page](https://narigo.github.com/reimemonster).
+page](https://narigo.github.com/reimemonster). It saves your last poem to the localstorage, lets 
+you search for rhymes by selecting a word and shows the amount of syllables in the lines on the 
+side.
 
 ## Usage
 
