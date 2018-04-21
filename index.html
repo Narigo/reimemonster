@@ -115,6 +115,7 @@
       flex-grow: 1;
       display: flex;
       flex-direction: row;
+      position: relative;
     }
 
     #rhymes {
@@ -175,6 +176,21 @@
       justify-content: space-between;
     }
 
+    #suggestions {
+      position: absolute;
+      border: 1px solid #000;
+      border-radius: 50%;
+      height: 25px;
+      text-align: center;
+      line-height: 25px;
+      color: #fff;
+      background-color: #000;
+      right: 80px;
+      top: 0;
+      width: 25px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
   </style>
 </head>
 <body>
@@ -186,6 +202,7 @@
   <div class="poem-wrap">
     <textarea id="poem"></textarea>
     <div id="helper"></div>
+    <div id="suggestions">i</div>
   </div>
   <div id="rhymes" class="hidden"></div>
 </section>
