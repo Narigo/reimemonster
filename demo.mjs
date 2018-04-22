@@ -3,6 +3,7 @@ import { countSyllablesByLine } from "./src/module/count-syllables.mjs";
 const $poem = document.getElementById("poem");
 const $helper = document.getElementById("helper");
 const $rhymes = document.getElementById("rhymes");
+const $suggestions = document.getElementById("suggestions");
 const lastPoem = localStorage.getItem("poem");
 
 $poem.value = lastPoem + $poem.value;
@@ -47,9 +48,13 @@ document.addEventListener("keyup", event => {
   if (event.keyCode === ESC_KEYCODE) {
     event.preventDefault();
     event.stopPropagation();
-    $rhymes.classList.toggle("hidden");
+    toggleRhymeHelper();
   }
 });
+
+$suggestions.addEventListener("pointerup", () => {
+  toggleRhymeHelper();
+})
 
 $rhymes.addEventListener("pointerup", () => {
   $rhymes.classList.add("hidden");
@@ -58,4 +63,8 @@ $rhymes.addEventListener("pointerup", () => {
 
 function getWordFromPosition(text, positionStart, positionEnd) {
   return text.substring(positionStart, positionEnd);
+}
+
+function toggleRhymeHelper() {
+  $rhymes.classList.toggle("hidden");
 }
