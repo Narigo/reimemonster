@@ -54,7 +54,7 @@ document.addEventListener("keyup", event => {
 
 $suggestions.addEventListener("pointerup", () => {
   toggleRhymeHelper();
-})
+});
 
 $rhymes.addEventListener("pointerup", () => {
   $rhymes.classList.add("hidden");
