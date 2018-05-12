@@ -9,10 +9,12 @@
   },
   "scripts": {
     "coverage": "jest --ci --coverage",
-    "build": "npm run build-lib",
+    "build": "npm -s run build-demo && npm -s run build-lib",
     "build-demo": "rollup demo-worker.mjs -o demo-worker.js -f es",
-    "build-lib": "npm run build-lib-cli && npm run build-lib-module",
-    "build-lib-cli": "rollup src/cli/cli-find.mjs -o bin/find-rhyme.js -f cjs --banner '#!/usr/bin/env node\n' && rollup src/cli/cli-poem.mjs -o bin/poem.js -e split -f cjs --banner '#!/usr/bin/env node\n'",
+    "build-lib": "npm -s run build-lib-cli && npm -s run build-lib-module",
+    "build-lib-cli": "npm -s run build-lib-cli-poem && npm -s run build-lib-cli-rhyme",
+    "build-lib-cli-poem": "rollup src/cli/cli-poem.mjs -o bin/poem.js -e split -f cjs --banner '#!/usr/bin/env node\n'",
+    "build-lib-cli-rhyme": "rollup src/cli/cli-find.mjs -o bin/find-rhyme.js -f cjs --banner '#!/usr/bin/env node\n'",
     "build-lib-module": "rollup src/module/index.mjs -o lib/index.js -f cjs",
     "demo": "python server.py",
     "format": "prettier --write **/*.{m,}js",
@@ -35,6 +37,9 @@
     "prettier": "^1.12.1",
     "rollup": "^0.58.2"
   },
+  "dependencies": {
+    "split": "^1.0.1"
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -52,8 +57,5 @@
     "transform": {
       "^.+\\.m?jsx?$": "babel-jest"
     }
-  },
-  "dependencies": {
-    "split": "^1.0.1"
   }
 }
