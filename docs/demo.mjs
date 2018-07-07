@@ -4,7 +4,7 @@ const $poem = document.getElementById("poem");
 const $helper = document.getElementById("helper");
 const $rhymes = document.getElementById("rhymes");
 const $suggestions = document.getElementById("suggestions");
-const lastPoem = localStorage.getItem("poem");
+const lastPoem = localStorage.getItem("poem") || "";
 
 $poem.value = lastPoem + $poem.value;
 $poem.focus();
