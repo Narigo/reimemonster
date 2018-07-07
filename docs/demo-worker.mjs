@@ -1,4 +1,4 @@
-import { findRhyme } from "./src/module/find-rhyme.mjs";
+import { findRhyme } from "../src/module/find-rhyme.mjs";
 
 self.addEventListener(
   "message",

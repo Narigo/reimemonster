@@ -1,4 +1,4 @@
-import { countSyllablesByLine } from "./src/module/count-syllables.mjs";
+import { countSyllablesByLine } from "../src/module/count-syllables.mjs";
 
 const $poem = document.getElementById("poem");
 const $helper = document.getElementById("helper");
