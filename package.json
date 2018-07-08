@@ -10,7 +10,7 @@
   "scripts": {
     "coverage": "jest --ci --coverage",
     "build": "npm -s run build-demo && npm -s run build-lib",
-    "build-demo": "rollup docs/demo-worker.mjs -o docs/demo-worker.js -f es",
+    "build-demo": "rollup docs/demo-worker.mjs -o docs/demo-worker.js -f es && rollup docs/demo.mjs -o docs/demo.js -f es",
     "build-lib": "npm -s run build-lib-cli && npm -s run build-lib-module",
     "build-lib-cli": "npm -s run build-lib-cli-poem && npm -s run build-lib-cli-rhyme",
     "build-lib-cli-poem": "rollup src/cli/cli-poem.mjs -o bin/poem.js -e split -f cjs --banner '#!/usr/bin/env node\n'",
