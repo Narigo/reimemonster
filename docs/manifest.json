@@ -9,31 +9,31 @@
 	"icons": [],
 	"lang": "de",
   "Icons": [{
-    "src": "images/Reimemonster48.png",
+    "src": "images/Reimemonsterx48.png",
     "sizes": "48x48",
     "type": "image/png"
   }, {
-    "src": "images/Reimemonster72.png",
+    "src": "images/Reimemonsterx72.png",
     "sizes": "72x72",
     "type": "image/png"
   }, {
-    "src": "images/Reimemonster96.png",
+    "src": "images/Reimemonsterx96.png",
     "sizes": "96x96",
     "type": "image/png"
   }, {
-    "src": "images/Reimemonster144.png",
+    "src": "images/Reimemonsterx144.png",
     "sizes": "144x144",
     "type": "image/png"
   }, {
-    "src": "images/Reimemonster168.png",
+    "src": "images/Reimemonsterx168.png",
     "sizes": "168x168",
     "type": "image/png"
   }, {
-    "src": "images/Reimemonster192.png",
+    "src": "images/Reimemonsterx192.png",
     "sizes": "192x192",
     "type": "image/png"
   }, {
-    "src": "images/Reimemonster512.png",
+    "src": "images/Reimemonsterx512.png",
     "sizes": "512x512",
     "type": "image/png"
   }, {
