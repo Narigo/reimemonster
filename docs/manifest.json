@@ -6,9 +6,8 @@
   "background_color" : "#fff" ,
   "theme_color" : "#99B3FF" ,
 	"description": "Einfacher Gedichte schreiben.",
-	"icons": [],
 	"lang": "de",
-  "Icons": [{
+  "icons": [{
     "src": "images/Reimemonsterx48.png",
     "sizes": "48x48",
     "type": "image/png"
