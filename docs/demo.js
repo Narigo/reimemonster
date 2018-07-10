@@ -42,9 +42,7 @@ function exceptionSplitter(syllables, wordPart) {
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/sw.js", {
-      scope: "/"
-    })
+    .register("./sw.js")
     .then(sw => {
       console.log("registered service worker!");
       // registration worked!

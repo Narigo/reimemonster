@@ -2,9 +2,7 @@ import { countSyllablesByLine } from "../src/module/count-syllables.mjs";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/sw.js", {
-      scope: "/"
-    })
+    .register("./sw.js")
     .then(sw => {
       console.log("registered service worker!");
       // registration worked!
