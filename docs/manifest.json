@@ -1,9 +1,10 @@
 {
   "name": "Reimemonster",
   "short_name": "reimemonster",
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "background_color" : "#fff" ,
+  "theme_color" : "#99B3FF" ,
 	"description": "Einfacher Gedichte schreiben.",
 	"icons": [],
 	"lang": "de",
