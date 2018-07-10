@@ -1,7 +1,13 @@
 self.addEventListener("install", function(event) {
   event.waitUntil(
     caches.open("static-v1").then(function(cache) {
-      return cache.addAll(["/", "/fallback.html", "/demo.js", "/demo-worker.js"]);
+      return cache.addAll([
+        "/",
+        "/fallback.html",
+        "/demo.js",
+        "/demo-worker.js",
+        "//fonts.googleapis.com/css?family=Inconsolata|Permanent+Marker"
+      ]);
     })
   );
 });
