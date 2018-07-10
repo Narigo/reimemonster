@@ -40,6 +40,21 @@ function exceptionSplitter(syllables, wordPart) {
   return [...syllables, ...exceptions];
 }
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/sw.js", {
+      scope: "/"
+    })
+    .then(sw => {
+      console.log("registered service worker!");
+      // registration worked!
+    })
+    .catch(e => {
+      console.log("registered service failed!", e);
+      // registration failed :(
+    });
+}
+
 const $poem = document.getElementById("poem");
 const $helper = document.getElementById("helper");
 const $rhymes = document.getElementById("rhymes");
