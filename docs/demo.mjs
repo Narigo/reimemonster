@@ -1,16 +1,11 @@
 import { countSyllablesByLine } from "../src/module/count-syllables.mjs";
 
+const REPOSITORY = "reimemonster";
+
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./sw.js")
-    .then(sw => {
-      console.log("registered service worker!");
-      // registration worked!
-    })
-    .catch(e => {
-      console.log("registered service failed!", e);
-      // registration failed :(
-    });
+  navigator.serviceWorker.register(`/${REPOSITORY}/sw.js`, { scope: `/${REPOSITORY}/` }).catch(e => {
+    console.log("registered service failed!", e);
+  });
 }
 
 const $poem = document.getElementById("poem");
