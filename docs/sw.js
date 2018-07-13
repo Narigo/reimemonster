@@ -15,6 +15,7 @@ self.addEventListener("install", function(event) {
 });
 
 self.addEventListener("fetch", function(event) {
+  console.log("SW Request:", e.request.url);
   event.respondWith(
     caches
       .match(event.request)
