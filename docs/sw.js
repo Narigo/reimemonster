@@ -1,5 +1,5 @@
 const REPOSITORY = "reimemonster";
-const VERSION = "v1";
+const VERSION = "v2";
 const URLS = [
 	`./`,
   `/${REPOSITORY}/`,
