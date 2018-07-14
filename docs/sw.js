@@ -20,7 +20,7 @@ self.addEventListener("fetch", function(event) {
   event.respondWith(
     caches
       .match(event.request)
-      .then(response => response || event.default())
+      .then(response => response || fetch(event.request))
       .catch(() => caches.match(`/${REPOSITORY}/fallback.html`))
   );
 });
