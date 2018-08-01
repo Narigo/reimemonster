@@ -1,5 +1,5 @@
 const REPOSITORY = "reimemonster";
-const VERSION = "v2";
+const VERSION = "v3";
 const URLS = [
 	`./`,
   `/${REPOSITORY}/`,
@@ -7,6 +7,7 @@ const URLS = [
   `/${REPOSITORY}/fallback.html`,
   `/${REPOSITORY}/demo.js`,
   `/${REPOSITORY}/demo-worker.js`,
+  `/${REPOSITORY}/images/Reimemonsterx48.png`,
   "//fonts.googleapis.com/css?family=Inconsolata|Permanent+Marker"
 ];
 const CACHE_NAME = `${REPOSITORY}-${VERSION}`;
