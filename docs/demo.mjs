@@ -12,15 +12,35 @@ const $poem = document.getElementById("poem");
 const $helper = document.getElementById("helper");
 const $rhymes = document.getElementById("rhymes");
 const $suggestions = document.getElementById("suggestions");
-const lastPoem = localStorage.getItem("poem") || "";
+const $savedPoems = document.getElementById("saved-poems");
+const savedPoems = JSON.parse(localStorage.getItem("poems")) || [];
 
-$poem.value = lastPoem + $poem.value;
+$poem.value = (savedPoems[savedPoems.length - 1] || "") + $poem.value;
 $poem.focus();
+
+savedPoems.forEach((poem, idx) => {
+  const $option = document.createElement("option");
+  $option.value = idx;
+  $option.text = `Text ${idx + 1}`;
+  $savedPoems.appendChild($option);
+});
+const $option = document.createElement("option");
+$option.selected = true;
+$option.value = savedPoems.length;
+$option.text = `Text ${savedPoems.length + 1}`;
+$savedPoems.appendChild($option);
+
+$savedPoems.onchange = e => {
+  const poemIdx = e.target.value;
+  $poem.value = savedPoems[poemIdx] || "";
+};
 
 $poem.oninput = () => {
   const textValue = $poem.value;
   const countedSyllables = countSyllablesByLine(textValue);
-  localStorage.setItem("poem", textValue);
+  console.log($savedPoems.options[$savedPoems.selectedIndex].value);
+  savedPoems[$savedPoems.options[$savedPoems.selectedIndex].value] = textValue;
+  localStorage.setItem("poems", JSON.stringify(savedPoems));
   $helper.innerHTML = countedSyllables.reduce(
     (lastLineInfos, syllablesInLine) => {
       const lineInfos = { ...lastLineInfos };
