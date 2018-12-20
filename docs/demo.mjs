@@ -21,9 +21,10 @@ $poem.focus();
 savedPoems.forEach((poem, idx) => {
   const $option = document.createElement("option");
   $option.value = idx;
-  $option.text = `Text ${idx + 1}`;
+  $option.text = savedPoems[idx] ? savedPoems[idx].split(/\n/)[0] : `Text ${idx + 1}`;
   $savedPoems.appendChild($option);
 });
+
 const $option = document.createElement("option");
 $option.selected = true;
 $option.value = savedPoems.length;
