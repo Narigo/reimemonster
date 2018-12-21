@@ -13,33 +13,39 @@ const $helper = document.getElementById("helper");
 const $rhymes = document.getElementById("rhymes");
 const $suggestions = document.getElementById("suggestions");
 const $savedPoems = document.getElementById("saved-poems");
+const $removeSavedButton = document.getElementById("remove-saved-button");
 const savedPoems = JSON.parse(localStorage.getItem("poems")) || [];
+const options = JSON.parse(localStorage.getItem("options")) || { selectedPoemIndex: 0 };
 
-$poem.value = (savedPoems[savedPoems.length - 1] || "") + $poem.value;
 $poem.focus();
 
-savedPoems.forEach((poem, idx) => {
-  const $option = document.createElement("option");
-  $option.value = idx;
-  $option.text = savedPoems[idx] ? savedPoems[idx].split(/\n/)[0] : `Text ${idx + 1}`;
-  $savedPoems.appendChild($option);
-});
-
-const $option = document.createElement("option");
-$option.selected = true;
-$option.value = savedPoems.length;
-$option.text = `Text ${savedPoems.length + 1}`;
-$savedPoems.appendChild($option);
+refreshSavedPoemsSelector();
 
 $savedPoems.onchange = e => {
-  const poemIdx = e.target.value;
+  const poemIdx = JSON.parse(e.target.value);
+  options.selectedPoemIndex = poemIdx;
+  localStorage.setItem("options", JSON.stringify(options));
   $poem.value = savedPoems[poemIdx] || "";
+};
+
+$removeSavedButton.onclick = e => {
+  e.preventDefault();
+  if (window.confirm("Willst Du diesen Text wirklich löschen? 😢")) {
+    const poemIdx = $savedPoems.selectedIndex;
+    const nextPoemIdx = Math.max(0, poemIdx - 1);
+    $savedPoems.removeChild($savedPoems.options[$savedPoems.selectedIndex]);
+    savedPoems.splice(poemIdx, 1);
+    options.selectedPoemIndex = nextPoemIdx;
+    localStorage.setItem("options", JSON.stringify(options));
+    localStorage.setItem("poems", JSON.stringify(savedPoems));
+    $poem.value = savedPoems[nextPoemIdx] || "";
+    refreshSavedPoemsSelector();
+  }
 };
 
 $poem.oninput = () => {
   const textValue = $poem.value;
   const countedSyllables = countSyllablesByLine(textValue);
-  console.log($savedPoems.options[$savedPoems.selectedIndex].value);
   savedPoems[$savedPoems.options[$savedPoems.selectedIndex].value] = textValue;
   localStorage.setItem("poems", JSON.stringify(savedPoems));
   $helper.innerHTML = countedSyllables.reduce(
@@ -96,4 +102,30 @@ function getWordFromPosition(text, positionStart, positionEnd) {
 
 function toggleRhymeHelper() {
   $rhymes.classList.toggle("hidden");
+}
+
+function refreshSavedPoemsSelector() {
+  while ($savedPoems.children.length > 0) {
+    $savedPoems.removeChild($savedPoems.firstChild);
+  }
+
+  savedPoems.forEach((poem, idx) => {
+    const firstLineOfPoem = poem.split(/\n/)[0];
+    const isSelected = idx === options.selectedPoemIndex;
+    const $option = document.createElement("option");
+    $option.selected = isSelected;
+    $option.value = idx;
+    $option.text = firstLineOfPoem !== "" ? firstLineOfPoem : `(Text ${idx + 1})`;
+    $savedPoems.appendChild($option);
+
+    if (isSelected) {
+      $poem.value = poem;
+    }
+  });
+
+  const $option = document.createElement("option");
+  $option.selected = savedPoems.length === options.selectedPoemIndex;
+  $option.value = savedPoems.length;
+  $option.text = `Neuer Text ...`;
+  $savedPoems.appendChild($option);
 }

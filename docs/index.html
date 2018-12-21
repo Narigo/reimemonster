@@ -1,221 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#99B3FF" />
+    <title>Reimemonster-Demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Permanent+Marker" rel="stylesheet" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="./images/Reimemonsterx48.png" />
+    <style type="text/css">
+      :root {
+        --colors-creativity-bright: #e6ecff;
+        --colors-creativity-light: #99b3ff;
+        --colors-creativity-main: #4f7bff;
+        --colors-creativity-shade: #0036cc;
+        --colors-creativity-dark: #00071a;
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#99B3FF"/>
-	<title>Reimemonster-Demo</title>
-	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Permanent+Marker" rel="stylesheet">
-	<link rel="manifest" href="./manifest.webmanifest">
-	<link rel="icon" type="image/png" href="./images/Reimemonsterx48.png">
-	<style type="text/css">
-		:root {
-			--colors-creativity-bright: #E6ECFF;
-			--colors-creativity-light: #99B3FF;
-			--colors-creativity-main: #4F7BFF;
-			--colors-creativity-shade: #0036CC;
-			--colors-creativity-dark: #00071A;
+        --colors-productivity-bright: #ffe6e6;
+        --colors-productivity-light: #ffa099;
+        --colors-productivity-main: #ff584d;
+        --colors-productivity-shade: #cc0a00;
+        --colors-productivity-dark: #330300;
 
-			--colors-productivity-bright: #FFE6E6;
-			--colors-productivity-light: #FFA099;
-			--colors-productivity-main: #FF584D;
-			--colors-productivity-shade: #CC0A00;
-			--colors-productivity-dark: #330300;
+        --colors-background: #ffffff;
+        --colors-text: #000000;
+        --colors-subtle-text: #d0d0d0;
 
-			--colors-background: #FFFFFF;
-			--colors-text: #000000;
-			--colors-subtle-text: #D0D0D0;
+        --background-color: var(--colors-background);
+        --highlight-color: var(--colors-creativity-light);
+        --highlight2-color: var(--colors-productivity-light);
+        --divider-color: var(--colors-subtle-text);
+        --main-color: var(--colors-text);
 
-			--background-color: var(--colors-background);
-			--highlight-color: var(--colors-creativity-light);
-			--highlight2-color: var(--colors-productivity-light);
-			--divider-color: var(--colors-subtle-text);
-			--main-color: var(--colors-text);
+        --helper-text-color: var(--colors-text);
+        --helper-background-color: var(--colors-background);
 
-			--helper-text-color: var(--colors-text);
-			--helper-background-color: var(--colors-background);
+        --header-background-color: var(--colors-background);
+        --header-text-color: var(--colors-text);
 
-			--header-background-color: var(--colors-background);
-			--header-text-color: var(--colors-text);
+        --footer-background-color: var(--colors-background);
+        --footer-text-color: var(--colors-text);
 
-			--footer-background-color: var(--colors-background);
-			--footer-text-color: var(--colors-text);
+        --poem-font: "Inconsolata", monospace;
+        --regular-font: "Inconsolata", monospace;
+        --title-font: "Permanent Marker", cursive;
 
-			--poem-font: 'Inconsolata', monospace;
-			--regular-font: 'Inconsolata', monospace;
-			--title-font: 'Permanent Marker', cursive;
+        --shadow-width: 10px;
+      }
 
-			--shadow-width: 10px;
-		}
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        background-color: var(--background-color);
+        font-family: var(--regular-font);
+        color: var(--main-color);
+      }
 
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-			min-height: 100%;
-			background-color: var(--background-color);
-			font-family: var(--regular-font);
-			color: var(--main-color);
-		}
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: -webkit-fill-available;
+      }
 
-		body {
-			display: flex;
-			flex-direction: column;
-			min-height: -webkit-fill-available;
-		}
+      header {
+        padding: 25px 25px 0 25px;
+        background: var(--colors-background);
+        flex-basis: 5rem;
+        flex-shrink: 0;
+        color: var(--header-text-color);
+        font-family: var(--title-font);
+      }
 
-		header {
-			padding: 25px 25px 0 25px;
-			background: var(--colors-background);
-			flex-basis: 5rem;
-			flex-shrink: 0;
-			color: var(--header-text-color);
-			font-family: var(--title-font);
-		}
+      h1 {
+        font-size: xx-large;
+      }
 
-		h1 {
-			font-size: xx-large;
-		}
+      h2 {
+        font-size: larger;
+      }
 
-		h2 {
-			font-size: larger;
-		}
+      footer {
+        background: var(--colors-background);
+        color: var(--footer-text-color);
+        flex-shrink: 0;
+      }
 
-		footer {
-			background: var(--colors-background);
-			color: var(--footer-text-color);
-			flex-shrink: 0;
-		}
+      a {
+        text-decoration: none;
+      }
 
-		a {
-			text-decoration: none;
-		}
+      #demo {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
 
-		#demo {
-			margin: 0;
-			display: flex;
-			flex-direction: column;
-			flex-grow: 1;
-		}
+      #demo .poem-wrap {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+      }
 
-		#demo .poem-wrap {
-			flex-grow: 1;
-			display: flex;
-			flex-direction: row;
-			position: relative;
-		}
+      #rhymes {
+        background-color: var(--helper-background-color);
+        border: 5px solid var(--main-color);
+        border-radius: 15px;
+        bottom: 10%;
+        box-shadow: #000000 0 0 50px;
+        box-sizing: border-box;
+        color: var(--helper-text-color);
+        left: 10%;
+        overflow: scroll;
+        padding: 25px;
+        position: fixed;
+        right: 10%;
+        top: 10%;
+        z-index: 5;
+      }
 
-		#rhymes {
-			background-color: var(--helper-background-color);
-			border: 5px solid var(--main-color);
-			border-radius: 15px;
-			bottom: 10%;
-			box-shadow: #000000 0 0 50px;
-			box-sizing: border-box;
-			color: var(--helper-text-color);
-			left: 10%;
-			overflow: scroll;
-			padding: 25px;
-			position: fixed;
-			right: 10%;
-			top: 10%;
-			z-index: 5;
-		}
+      #rhymes.hidden {
+        display: none;
+      }
 
-		#rhymes.hidden {
-			display: none;
-		}
+      #poem {
+        background: var(--background-color);
+        border: 0;
+        border-right: 1px solid var(--divider-color);
+        box-shadow: var(--shadow-width) 0 var(--shadow-width) calc(-1 * var(--shadow-width)) var(--main-color) inset,
+          0 calc(-1 * var(--shadow-width)) var(--shadow-width) calc(-1 * var(--shadow-width)) var(--main-color) inset,
+          0 var(--shadow-width) var(--shadow-width) calc(-1 * var(--shadow-width)) var(--main-color) inset;
+        font-family: var(--poem-font);
+        font-size: x-large;
+        min-height: 10em;
+        padding: 0 25px;
+        white-space: nowrap;
+        width: -webkit-fill-available;
+      }
 
-		#poem {
-			background: var(--background-color);
-			border: 0;
-			border-right: 1px solid var(--divider-color);
-			box-shadow: var(--shadow-width) 0 var(--shadow-width) calc(-1 * var(--shadow-width)) var(--main-color) inset,
-			0 calc(-1 * var(--shadow-width)) var(--shadow-width) calc(-1 * var(--shadow-width)) var(--main-color) inset,
-			0 var(--shadow-width) var(--shadow-width) calc(-1 * var(--shadow-width)) var(--main-color) inset;
-			font-family: var(--poem-font);
-			font-size: x-large;
-			min-height: 10em;
-			padding: 0 25px;
-			white-space: nowrap;
-			width: -webkit-fill-available;
-		}
+      #helper {
+        height: 100%;
+        padding: 2px 20px;
+        font-size: x-large;
+        width: 40px;
+      }
 
-		#helper {
-			height: 100%;
-			padding: 2px 20px;
-			font-size: x-large;
-			width: 40px;
-		}
+      #helper .ok {
+        color: var(--main-color);
+      }
 
-		#helper .ok {
-			color: var(--main-color);
-		}
+      #helper .warn {
+        color: var(--highlight-color);
+      }
 
-		#helper .warn {
-			color: var(--highlight-color);
-		}
+      .help-text {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 25px;
+      }
 
-		.help-text {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: center;
-			flex-wrap: wrap;
-			margin: 25px;
-		}
+      .help-text .text {
+        font-size: x-small;
+      }
 
-		.help-text .text {
-			font-size: x-small;
-		}
+      #suggestions {
+        position: absolute;
+        border: 1px solid #000;
+        border-radius: 50%;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+        color: #fff;
+        background-color: #000;
+        right: 80px;
+        top: 0;
+        width: 25px;
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
 
-		#suggestions {
-			position: absolute;
-			border: 1px solid #000;
-			border-radius: 50%;
-			height: 25px;
-			text-align: center;
-			line-height: 25px;
-			color: #fff;
-			background-color: #000;
-			right: 80px;
-			top: 0;
-			width: 25px;
-			font-family: 'Courier New', Courier, monospace;
-		}
-
-	</style>
-</head>
-
-<body>
-	<header>
-		<h1>Reimemonster Demo</h1>
-		<h2>Einfacher Gedichte schreiben.</h2>
-	</header>
-	<section id="demo">
-		<div class="poem-wrap">
-			<textarea id="poem"></textarea>
-			<div id="helper"></div>
-			<div id="suggestions">i</div>
-		</div>
-		<div id="rhymes" class="hidden"></div>
-	</section>
-	<section id="available-poems">
-		<select id="saved-poems">
-		</select>
-	</section>
-	<footer>
-		<p class="help-text">
-			<span class="copy">&copy; 2018 Jörn Bernhardt</span>
-			<span class="text">Markiere ein Wort, um Reimvorschläge zu erhalten! Diese Seite verwendet
-				<a href="https://fonts.google.com">Google Fonts</a>
-				(<a href="https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users">Datenschutz-Informationen</a>).</span>
-			<span class="source">
-				<a href="https://github.com/Narigo/reimemonster">Quellcode anzeigen</a>
-			</span>
-		</p>
-	</footer>
-	<script type="module" src="./demo.js"></script>
-</body>
+  <body>
+    <header>
+      <h1>Reimemonster Demo</h1>
+      <h2>Einfacher Gedichte schreiben.</h2>
+    </header>
+    <section id="demo">
+      <div class="poem-wrap">
+        <textarea id="poem"></textarea>
+        <div id="helper"></div>
+        <div id="suggestions">i</div>
+      </div>
+      <div id="rhymes" class="hidden"></div>
+    </section>
+    <section id="available-poems">
+      <select id="saved-poems"> </select>
+      <button id="remove-saved-button" type="button">❌ Löschen</button>
+    </section>
+    <footer>
+      <p class="help-text">
+        <span class="copy">&copy; 2018 Jörn Bernhardt</span>
+        <span class="text"
+          >Markiere ein Wort, um Reimvorschläge zu erhalten! Diese Seite verwendet
+          <a href="https://fonts.google.com">Google Fonts</a> (<a
+            href="https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users"
+            >Datenschutz-Informationen</a
+          >).</span
+        >
+        <span class="source"> <a href="https://github.com/Narigo/reimemonster">Quellcode anzeigen</a> </span>
+      </p>
+    </footer>
+    <script type="module" src="./demo.js"></script>
+  </body>
 </html>
