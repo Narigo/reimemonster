@@ -53,13 +53,13 @@ const $helper = document.getElementById("helper");
 const $rhymes = document.getElementById("rhymes");
 const $suggestions = document.getElementById("suggestions");
 const $savedPoems = document.getElementById("saved-poems");
+const $reloadButton = document.getElementById("reload-button");
 const $removeSavedButton = document.getElementById("remove-saved-button");
 const savedPoems = JSON.parse(localStorage.getItem("poems")) || [];
 const options = JSON.parse(localStorage.getItem("options")) || { selectedPoemIndex: 0 };
 
 $poem.focus();
 
-console.log({ options });
 refreshSavedPoemsSelector();
 
 $savedPoems.onchange = e => {
@@ -67,7 +67,11 @@ $savedPoems.onchange = e => {
   options.selectedPoemIndex = poemIdx;
   localStorage.setItem("options", JSON.stringify(options));
   $poem.value = savedPoems[poemIdx] || "";
-  console.log({ options });
+};
+
+$reloadButton.onclick = e => {
+  e.preventDefault();
+  refreshSavedPoemsSelector();
 };
 
 $removeSavedButton.onclick = e => {
@@ -78,7 +82,6 @@ $removeSavedButton.onclick = e => {
     $savedPoems.removeChild($savedPoems.options[$savedPoems.selectedIndex]);
     savedPoems.splice(poemIdx, 1);
     options.selectedPoemIndex = nextPoemIdx;
-    console.log({ options });
     localStorage.setItem("options", JSON.stringify(options));
     localStorage.setItem("poems", JSON.stringify(savedPoems));
     $poem.value = savedPoems[nextPoemIdx] || "";
