@@ -187,8 +187,12 @@
       #available-poems {
         align-items: center;
         display: grid;
-        grid-template-columns: calc(100% * 1 / 3) calc(100% * 1 / 3) calc(100% * 1 / 3);
+        grid-template-columns: 1fr max-content max-content;
       }
+
+			#available-poems > * {
+				width: 100%;
+			}
     </style>
   </head>
 
