@@ -1,7 +1,7 @@
 const REPOSITORY = "reimemonster";
 const VERSION = "v3";
 const URLS = [
-	`./`,
+  `./`,
   `/${REPOSITORY}/`,
   `/${REPOSITORY}/index.html`,
   `/${REPOSITORY}/fallback.html`,
