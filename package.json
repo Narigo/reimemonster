@@ -37,9 +37,7 @@
     "prettier": "^1.18.2",
     "rollup": "^1.21.0"
   },
-  "dependencies": {
-    "split": "^1.0.1"
-  },
+  "dependencies": {},
   "jest": {
     "moduleFileExtensions": [
       "js",
