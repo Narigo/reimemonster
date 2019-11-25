@@ -34,7 +34,7 @@ function exceptionSplitter(syllables, wordPart) {
       const matches = exceptionsList[i].exec(part);
       if (matches) {
         const splits = matches.slice(1);
-        return splits.reduce((acc, split) => acc.concat(split.length > 0 ? splitOnException(split) : []), []);
+        return splits.reduce((acc, split) => acc.concat(splitOnException(split)), []);
       }
     }
     return [part];

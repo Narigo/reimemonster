@@ -31,7 +31,7 @@ function exceptionSplitter(syllables, wordPart) {
       const matches = exceptionsList[i].exec(part);
       if (matches) {
         const splits = matches.slice(1);
-        return splits.reduce((acc, split) => acc.concat(split.length > 0 ? splitOnException(split) : []), []);
+        return splits.reduce((acc, split) => acc.concat(splitOnException(split)), []);
       }
     }
     return [part];
@@ -118,12 +118,6 @@ worker.addEventListener("message", message => {
   $rhymes.classList.remove("hidden");
 });
 
-$poem.onselect = () => {
-  const textValue = $poem.value;
-  const word = getWordFromPosition(textValue, $poem.selectionStart, $poem.selectionEnd);
-  worker.postMessage(word);
-};
-
 const ESC_KEYCODE = 27;
 document.addEventListener("keyup", event => {
   if (event.keyCode === ESC_KEYCODE) {
@@ -133,18 +127,33 @@ document.addEventListener("keyup", event => {
   }
 });
 
-$suggestions.addEventListener("pointerup", () => {
+document.addEventListener(
+  "selectionchange",
+  () => {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const word = selection.toString();
+      if (word.trim() !== "") {
+        fetchRhymesForWord(word);
+      }
+    }
+  },
+  false
+);
+
+const fetchRhymesForWord = word => {
+  worker.postMessage(word);
+  $rhymes.innerText = `Suche nach ${word} ...`;
+};
+
+$suggestions.addEventListener("click", event => {
   toggleRhymeHelper();
 });
 
-$rhymes.addEventListener("pointerup", () => {
+$rhymes.addEventListener("click", () => {
   $rhymes.classList.add("hidden");
   window.getSelection().collapse($poem, 0);
 });
-
-function getWordFromPosition(text, positionStart, positionEnd) {
-  return text.substring(positionStart, positionEnd);
-}
 
 function toggleRhymeHelper() {
   $rhymes.classList.toggle("hidden");
