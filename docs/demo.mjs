@@ -74,7 +74,8 @@ $poem.oninput = () => {
 
 const worker = new Worker("./demo-worker.js");
 worker.addEventListener("message", message => {
-  $rhymes.innerText = message.data;
+  const data = JSON.parse(message.data);
+  $rhymes.innerHTML = `<h2>Reimvorschläge für ${data.word}:</h2><p>${data.rhymes}</p>`;
   $rhymes.classList.remove("hidden");
 });
 
