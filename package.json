@@ -16,7 +16,7 @@
     "build-lib-cli-poem": "rollup src/cli/cli-poem.mjs -o bin/poem.js -e split -f cjs --banner '#!/usr/bin/env node\n'",
     "build-lib-cli-rhyme": "rollup src/cli/cli-find.mjs -o bin/find-rhyme.js -f cjs --banner '#!/usr/bin/env node\n'",
     "build-lib-module": "rollup src/module/index.mjs -o lib/index.js -f cjs",
-    "demo": "python server.py",
+    "demo": "npx serve docs",
     "format": "prettier --write **/*.{m,}js",
     "rhyme": "node --experimental-modules src/cli/cli-find.mjs",
     "start": "node --experimental-modules src/cli/cli-poem.mjs --validate",
