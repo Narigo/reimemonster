@@ -70,4 +70,5 @@ npm run rhyme <your-word>
 
 ## Acknowledgements
 
-German wordlist from [anagram.tips](https://raw.githubusercontent.com/Haspaker/anagram.tips/1d2c39c9675597304565d7245a19c133d7fbc301/words/de/dict/german.wordlist.txt).
+- German wordlist from [anagram.tips](https://raw.githubusercontent.com/Haspaker/anagram.tips/1d2c39c9675597304565d7245a19c133d7fbc301/words/de/dict/german.wordlist.txt).
+- Another wordlist scraped from Wikipedia from [aaabbb.de](http://www.aaabbb.de/WordList/WordList_en.php) (see [german-wiki-checked.txt](./german-wiki-checked.txt)
