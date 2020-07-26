@@ -3,7 +3,7 @@ function countSyllables(text) {
   return simpleText
     .split(/[^\wäöüÄÖÜß']+/)
     .reduce(exceptionSplitter, [])
-    .map(syllables => syllables.split(/[aeiouäöüy]{1,2}/i).length - 1)
+    .map((syllables) => syllables.split(/[aeiouäöüy]{1,2}/i).length - 1)
     .reduce((sum, x) => sum + x, 0);
 }
 
@@ -24,9 +24,9 @@ function exceptionSplitter(syllables, wordPart) {
     /^(.*e)(ta)(e)(be.*)$/gi,
     /^(.*zu)(er.*)$/gi,
     /^(.*bak)(te)(ri)(e.*)$/gi,
-    /^(no)(ah)$/gi
+    /^(no)(ah)$/gi,
   ];
-  const splitOnException = part => {
+  const splitOnException = (part) => {
     for (let i = 0; i < exceptionsList.length; i++) {
       const matches = exceptionsList[i].exec(part);
       if (matches) {
@@ -43,7 +43,7 @@ function exceptionSplitter(syllables, wordPart) {
 const REPOSITORY = "reimemonster";
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register(`/${REPOSITORY}/sw.js`, { scope: `/${REPOSITORY}/` }).catch(e => {
+  navigator.serviceWorker.register(`/${REPOSITORY}/sw.js`, { scope: `/${REPOSITORY}/` }).catch((e) => {
     console.log("registered service failed!", e);
   });
 }
@@ -62,19 +62,19 @@ $poem.focus();
 
 refreshSavedPoemsSelector();
 
-$savedPoems.onchange = e => {
+$savedPoems.onchange = (e) => {
   const poemIdx = JSON.parse(e.target.value);
   options.selectedPoemIndex = poemIdx;
   localStorage.setItem("options", JSON.stringify(options));
   $poem.value = savedPoems[poemIdx] || "";
 };
 
-$reloadButton.onclick = e => {
+$reloadButton.onclick = (e) => {
   e.preventDefault();
   refreshSavedPoemsSelector();
 };
 
-$removeSavedButton.onclick = e => {
+$removeSavedButton.onclick = (e) => {
   e.preventDefault();
   if (window.confirm("Willst Du diesen Text wirklich löschen? 😢")) {
     const poemIdx = $savedPoems.selectedIndex;
@@ -107,20 +107,20 @@ $poem.oninput = () => {
     {
       lineNumber: 0,
       syllables: 0,
-      html: ""
+      html: "",
     }
   ).html;
 };
 
 const worker = new Worker("./demo-worker.js");
-worker.addEventListener("message", message => {
+worker.addEventListener("message", (message) => {
   const data = JSON.parse(message.data);
   $rhymes.innerHTML = `<h2>Reimvorschläge für ${data.word}:</h2><p>${data.rhymes}</p>`;
   $rhymes.classList.remove("hidden");
 });
 
 const ESC_KEYCODE = 27;
-document.addEventListener("keyup", event => {
+document.addEventListener("keyup", (event) => {
   if (event.keyCode === ESC_KEYCODE) {
     event.preventDefault();
     event.stopPropagation();
@@ -142,12 +142,12 @@ document.addEventListener(
   false
 );
 
-const fetchRhymesForWord = word => {
+const fetchRhymesForWord = (word) => {
   worker.postMessage(word);
   $rhymes.innerText = `Suche nach ${word} ...`;
 };
 
-$suggestions.addEventListener("click", event => {
+$suggestions.addEventListener("click", (event) => {
   toggleRhymeHelper();
 });
 

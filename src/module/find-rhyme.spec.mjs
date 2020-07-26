@@ -51,7 +51,7 @@ describe("find-rhyme", () => {
 
   it("should be possible to have different word lists for findRhyme", () => {
     const rhymingWords = findRhyme("Haus", {
-      words: ["Haus", "Maus", "raus", "Chaos"]
+      words: ["Haus", "Maus", "raus", "Chaos"],
     });
     assert(!rhymingWords.includes("Chaos"));
     assert(!rhymingWords.includes("Laus"));
@@ -61,7 +61,7 @@ describe("find-rhyme", () => {
 
   it("should remove punctuation etc at the end of a word", () => {
     const rhymingWords = findRhyme("Haus...!", {
-      words: ["Haus", "Maus", "raus", "Chaos"]
+      words: ["Haus", "Maus", "raus", "Chaos"],
     });
     assert(!rhymingWords.includes("Chaos"));
     assert(!rhymingWords.includes("Laus"));

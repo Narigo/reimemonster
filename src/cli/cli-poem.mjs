@@ -5,7 +5,7 @@ const validate = process.argv[2] === "--validate";
 
 let validateCount = 0;
 
-process.stdin.pipe(split(/(\r?\n)/)).on("data", line => {
+process.stdin.pipe(split(/(\r?\n)/)).on("data", (line) => {
   const counted = countSyllables(line);
   if (validate && validateCount > 0 && counted > 0 && counted !== validateCount) {
     console.warn(`! ${counted} != ${validateCount}`);

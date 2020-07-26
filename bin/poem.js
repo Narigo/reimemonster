@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+function _interopDefault(ex) {
+  return ex && typeof ex === "object" && "default" in ex ? ex["default"] : ex;
+}
 
-var split = _interopDefault(require('split'));
+var split = _interopDefault(require("split"));
 
 function countSyllables(text) {
   const simpleText = text || "";
   return simpleText
     .split(/[^\wäöüÄÖÜß']+/)
     .reduce(exceptionSplitter, [])
-    .map(syllables => syllables.split(/[aeiouäöüy]{1,2}/i).length - 1)
+    .map((syllables) => syllables.split(/[aeiouäöüy]{1,2}/i).length - 1)
     .reduce((sum, x) => sum + x, 0);
 }
 
@@ -27,9 +29,9 @@ function exceptionSplitter(syllables, wordPart) {
     /^(.*e)(ta)(e)(be.*)$/gi,
     /^(.*zu)(er.*)$/gi,
     /^(.*bak)(te)(ri)(e.*)$/gi,
-    /^(no)(ah)$/gi
+    /^(no)(ah)$/gi,
   ];
-  const splitOnException = part => {
+  const splitOnException = (part) => {
     for (let i = 0; i < exceptionsList.length; i++) {
       const matches = exceptionsList[i].exec(part);
       if (matches) {
@@ -47,7 +49,7 @@ const validate = process.argv[2] === "--validate";
 
 let validateCount = 0;
 
-process.stdin.pipe(split(/(\r?\n)/)).on("data", line => {
+process.stdin.pipe(split(/(\r?\n)/)).on("data", (line) => {
   const counted = countSyllables(line);
   if (validate && validateCount > 0 && counted > 0 && counted !== validateCount) {
     console.warn(`! ${counted} != ${validateCount}`);

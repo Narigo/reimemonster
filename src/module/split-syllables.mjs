@@ -3,7 +3,7 @@ export function splitSyllables(text) {
   return simpleText
     .split(/[^\wäöüÄÖÜß']+/)
     .reduce(splitter, [])
-    .filter(x => x !== "");
+    .filter((x) => x !== "");
 }
 
 function splitter(syllables, wordPart) {
@@ -44,9 +44,9 @@ function splitter(syllables, wordPart) {
     { r: /^(.*ge)(schwin)(dig.*)$/gi, d: [2] },
     { r: /^(.*)(keit)$/gi, d: [2] },
     { r: /^(.*[aeiouäöüy]{2})([aeiouäöüy]+.*)$/i },
-    { r: /^(.+)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy]*)$/i, d: [2] }
+    { r: /^(.+)([^aeiouäöüy][aeiouäöüy]{1,2}[^aeiouäöüy]*)$/i, d: [2] },
   ];
-  const splitOnPart = part => {
+  const splitOnPart = (part) => {
     for (let i = 0; i < splitList.length; i++) {
       const re = splitList[i].r;
       const done = splitList[i].d;
@@ -68,7 +68,7 @@ function splitter(syllables, wordPart) {
     }
     return [part];
   };
-  const mergeParts = parts =>
+  const mergeParts = (parts) =>
     parts.reduce((list, part, idx) => {
       if (idx > 0) {
         const lastIndex = list.length - 1;

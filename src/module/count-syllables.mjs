@@ -3,7 +3,7 @@ export function countSyllables(text) {
   return simpleText
     .split(/[^\wäöüÄÖÜß']+/)
     .reduce(exceptionSplitter, [])
-    .map(syllables => syllables.split(/[aeiouäöüy]{1,2}/i).length - 1)
+    .map((syllables) => syllables.split(/[aeiouäöüy]{1,2}/i).length - 1)
     .reduce((sum, x) => sum + x, 0);
 }
 
@@ -24,9 +24,9 @@ function exceptionSplitter(syllables, wordPart) {
     /^(.*e)(ta)(e)(be.*)$/gi,
     /^(.*zu)(er.*)$/gi,
     /^(.*bak)(te)(ri)(e.*)$/gi,
-    /^(no)(ah)$/gi
+    /^(no)(ah)$/gi,
   ];
-  const splitOnException = part => {
+  const splitOnException = (part) => {
     for (let i = 0; i < exceptionsList.length; i++) {
       const matches = exceptionsList[i].exec(part);
       if (matches) {

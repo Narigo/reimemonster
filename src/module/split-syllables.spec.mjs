@@ -75,7 +75,7 @@ describe("split-syllables", () => {
       "sil",
       "ben",
       "zäh",
-      "len"
+      "len",
     ]);
   });
 
@@ -102,7 +102,7 @@ describe("split-syllables", () => {
       "der",
       "was",
       "das",
-      "ist"
+      "ist",
     ]);
   });
 

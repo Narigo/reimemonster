@@ -4,11 +4,11 @@ import wordlist from "../wordlists/german.mjs";
 
 describe("dictionary-test", () => {
   it("count-syllables should have a good snapshot", () => {
-    expect(wordlist.split(/\n/).map(word => `${word}:${countSyllables(word)}`)).toMatchSnapshot();
+    expect(wordlist.split(/\n/).map((word) => `${word}:${countSyllables(word)}`)).toMatchSnapshot();
   });
 
   it("split-syllables should have a good snapshot", () => {
-    expect(wordlist.split(/\n/).map(word => `${word}:${splitSyllables(word).join("•")}`)).toMatchSnapshot();
+    expect(wordlist.split(/\n/).map((word) => `${word}:${splitSyllables(word).join("•")}`)).toMatchSnapshot();
   });
 
   // Takes too long while not correct.
