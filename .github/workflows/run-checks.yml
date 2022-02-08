@@ -40,6 +40,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-
 
+      - name: Install npm packages 📦
+        run: |
+          npm ci
+
       - name: Run svelte-check 🔬
         run: |
           npm run check
@@ -60,6 +64,10 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
+
+      - name: Install npm packages 📦
+        run: |
+          npm ci
 
       - name: Run linter 🕵️
         run: |
