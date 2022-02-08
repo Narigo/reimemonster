@@ -44,9 +44,9 @@ jobs:
         run: |
           npm ci
 
-      - name: Run svelte-check 🔬
+      - name: Run tests 🔬
         run: |
-          npm run check
+          npm run test
 
   lint-code:
     runs-on: ubuntu-latest
