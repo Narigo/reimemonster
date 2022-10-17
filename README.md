@@ -46,9 +46,7 @@ ending. For example, `findRhyme("anleiern")` results in a list like this:
 countSyllables(text: string): integer
 ```
 
-This will count the number of syllables in a text by using the `hyphen` module. It uses `hyphen` to find splitting 
-possibilities and counts these. This is not always working out well, for example the word "oder" should not be 
-hyphenated but should actually be counted as two syllables in context of a poem.
+This will count the number of syllables in a text by using a custom splitter with regular expressions. There are some words for which this approach does not work, because they can be split up in several ways. For example "Millionen" could be divided as "Mil-li-o-nen" or "Mil-lio-nen", depending on how you would pronounce it.
 
 ### Command line usage
 

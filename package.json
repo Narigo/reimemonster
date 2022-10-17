@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Counts syllables in texts.",
   "main": "src/module/index.mjs",
+  "types": "types.d.ts",
   "bin": {
     "find-rhyme": "bin/find-rhyme.js",
     "poem": "bin/poem.js"
