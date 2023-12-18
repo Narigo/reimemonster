@@ -134,6 +134,7 @@ describe("split-syllables", () => {
       testWord("Blumentopferde", ["Blu", "men", "topf", "er", "de"]);
       testWord("eventuell", ["e", "ven", "tu", "ell"]);
       testWord("Geschwindigkeit", ["Ge", "schwin", "dig", "keit"]);
+      testWord("Mäuserich", ["Mäu", "se", "rich"]);
       testWord("Millionen", ["Mil", "li", "o", "nen"]);
       testWord("Noah", ["No", "ah"]);
       testWord("Polystyrol", ["Po", "ly", "styr", "ol"]);

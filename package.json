@@ -8,6 +8,7 @@
     "find-rhyme": "./bin/find-rhyme.js",
     "poem": "./bin/poem.js"
   },
+  "packageManager": "pnpm@8.11.0",
   "scripts": {
     "coverage": "jest --ci --coverage",
     "build": "npm -s run build-demo && npm -s run build-lib",

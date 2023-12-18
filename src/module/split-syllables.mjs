@@ -19,6 +19,7 @@ function splitter(syllables, wordPart) {
     { r: /^(.*[^q]u)(el.*)$/gi },
     { r: /^(.*i)(on.*)$/gi },
     { r: /^(.*i)(um.*)$/gi },
+    { r: /^(Mäu)(se)(rich.*)$/gi, d: [1, 2] },
     { r: /^(.*ä)(us.*)$/gi },
     { r: /^(.*e)(ta)(e)(be.*)$/gi },
     { r: /^(.*zu)(er.*)$/gi },
