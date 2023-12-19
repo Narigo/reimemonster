@@ -55,7 +55,7 @@ You can use the command line tools by cloning this repository and run the `npm` 
 To count syllables in verses, you can use this command for example:  
 
 ```
-npm run start
+pnpm run start
 ```
 
 To get out of this mode, press `CTRL`+`D`.
@@ -63,7 +63,7 @@ To get out of this mode, press `CTRL`+`D`.
 To find a rhyming word, use this command:
 
 ```
-npm run rhyme <your-word>
+pnpm run rhyme <your-word>
 ```
 
 ## Acknowledgements

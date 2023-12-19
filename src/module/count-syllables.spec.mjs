@@ -108,7 +108,7 @@ describe("count-syllables by line", () => {
     assert.deepEqual(
       countSyllablesByLine(`Dies ist ein Test.
         Wie - das frage ich! - viele Silben hat dieser Text(?), oder was das ist.`),
-      [4, 18]
+      [4, 18],
     );
   });
 });
